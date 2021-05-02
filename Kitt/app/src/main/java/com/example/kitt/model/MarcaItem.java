@@ -11,11 +11,19 @@ import com.xwray.groupie.ViewHolder;
 
 public class MarcaItem extends Item<ViewHolder> {
 
-    public MarcaItem(Drawable drawable) {
+    private final Drawable drawable;
+    private final String name;
+
+    public MarcaItem(Drawable drawable, String name) {
         this.drawable = drawable;
+        this.name = name;
     }
 
-    private final Drawable drawable;
+    public String getName() {
+        return name;
+    }
+
+
 
 
     @Override
@@ -29,6 +37,6 @@ public class MarcaItem extends Item<ViewHolder> {
 
     @Override
     public int getLayout() {
-        return R.layout.marcasitem;
+        return R.layout.marcas_item;
     }
 }
