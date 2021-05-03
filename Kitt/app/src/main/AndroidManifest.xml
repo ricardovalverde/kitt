@@ -12,16 +12,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Kitt">
         <activity android:name=".DetalhesVeiculosActivity">
+
+        </activity>
+        <activity android:name=".MainActivity">
+
+        </activity>
+        <activity android:name=".MarcasActivity">
+
+        </activity>
+        <activity android:name=".VeiculoActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".MainActivity"/>
-        <activity android:name=".MarcasActivity"/>
-        <activity android:name=".VeiculoActivity">
-
         </activity>
     </application>
 

@@ -50,6 +50,9 @@ public class MarcasActivity extends AppCompatActivity {
 
                 List<MarcaItem> items = new ArrayList<>();
                 items.add(new MarcaItem(ResourcesCompat.getDrawable(getResources(), R.drawable.yamahalogo, null), "audi"));
+                items.add(new MarcaItem(ResourcesCompat.getDrawable(getResources(), R.drawable.ducatilogo, null), "audi"));
+                items.add(new MarcaItem(ResourcesCompat.getDrawable(getResources(), R.drawable.harleydavidsonlogo, null), "audi"));
+                items.add(new MarcaItem(ResourcesCompat.getDrawable(getResources(), R.drawable.hondalogo, null), "audi"));
                 adapter.addAll(items);
                 adapter.notifyDataSetChanged();
             }

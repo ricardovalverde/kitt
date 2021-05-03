@@ -27,12 +27,12 @@ public class VeiculoItem extends Item<ViewHolder> {
         ImageView imageView = viewHolder.itemView.findViewById(R.id.image_vehicle);
         TextView textName = viewHolder.itemView.findViewById(R.id.name_vehicle);
         TextView textYear = viewHolder.itemView.findViewById(R.id.year_vehicle);
-        TextView textDesc = viewHolder.itemView.findViewById(R.id.txt_desc_veiculo);
+       // TextView textDesc = viewHolder.itemView.findViewById(R.id.txt_desc_veiculo);
 
         imageView.setImageDrawable(drawable);
         textName.setText(name);
         textYear.setText(year);
-        textDesc.setText(desc);
+//        textDesc.setText(desc);
 
     }
 

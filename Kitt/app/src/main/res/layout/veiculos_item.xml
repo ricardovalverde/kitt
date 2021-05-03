@@ -10,7 +10,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="30dp"
-        app:cardBackgroundColor="@color/v_black"
+        app:cardBackgroundColor="#CCFFFFFF"
         app:cardCornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -22,8 +22,7 @@
             android:id="@+id/image_vehicle"
             android:layout_width="350dp"
             android:layout_height="180dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/testbmw">
+            android:scaleType="centerCrop" >
 
         </ImageView>
 
