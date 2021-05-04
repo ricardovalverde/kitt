@@ -26,8 +26,8 @@ public class BrandPresenter implements LogoRemote.CallListLogoDataSource{
 
 
     @Override
-    public void onSuccess(List<String> response) {
-        view.showMarcas(response);
+    public void onSuccess(List<MarcaItem> item) {
+        view.showMarcas(item);
 
 
 

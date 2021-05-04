@@ -1,8 +1,5 @@
 package com.example.kitt.model;
 
-import android.graphics.drawable.Drawable;
-import android.media.Image;
-import android.view.View;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
@@ -20,12 +17,13 @@ public class MarcaItem extends Item<ViewHolder> {
 
     @SerializedName("icon_url")
     private final String icon_url;
-    
+
 
 
 
     public MarcaItem(String icon_url) {
         this.icon_url = icon_url;
+
     }
 
     public String getIcon_url() {

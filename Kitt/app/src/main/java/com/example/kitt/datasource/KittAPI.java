@@ -10,8 +10,11 @@ import retrofit2.http.GET;
 public interface KittAPI {
     String BASE_URL = Endpoint.BASE_URL;
 
-    @GET("logos_carros")
-    Call<List<String>> findAllLogo();
+
+
+    @GET("marcas/icon_url")
+    Call<List<MarcaItem>> findAllLogo();
 
 
 }
+
