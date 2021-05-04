@@ -27,16 +27,7 @@ public class VeiculoActivity extends AppCompatActivity {
 
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        List<VeiculoItem> items = new ArrayList<>();
 
-
-        items.add(new VeiculoItem(ResourcesCompat.getDrawable(getResources(),R.drawable.bmw,null),"BMW M5","2018","adf"));
-        items.add(new VeiculoItem(ResourcesCompat.getDrawable(getResources(),R.drawable.bmw2,null),"BMW M5","2018","adf"));
-        items.add(new VeiculoItem(ResourcesCompat.getDrawable(getResources(),R.drawable.bmw3,null),"BMW M5","2018","adf"));
-        items.add(new VeiculoItem(ResourcesCompat.getDrawable(getResources(),R.drawable.bmw4,null),"BMW M5","2018","adf"));
-
-        adapter.addAll(items);
-        adapter.notifyDataSetChanged();
 
 
 

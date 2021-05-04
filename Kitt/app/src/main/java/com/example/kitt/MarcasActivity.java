@@ -1,13 +1,17 @@
 package com.example.kitt;
 
 import android.os.Bundle;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.kitt.datasource.LogoRemote;
 import com.example.kitt.model.MarcaItem;
+import com.example.kitt.presentation.BrandPresenter;
+import com.squareup.picasso.Picasso;
 import com.xwray.groupie.GroupAdapter;
 
 import java.util.ArrayList;
@@ -28,34 +32,27 @@ public class MarcasActivity extends AppCompatActivity {
         RecyclerView recyclerView = findViewById(R.id.recyclerViewMarcas);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        showMarcas();
+        LogoRemote logoRemote = new LogoRemote();
+        new BrandPresenter(logoRemote,this).requestAllLogos();
 
 
     }
 
-    private void showMarcas() {
-        if (getIntent().getExtras() != null) {
+    public void showMarcas(List<String> marcaItems) {
+        /*if (getIntent().getExtras() != null) {
 
             String onclick = getIntent().getExtras().getString(click);
 
             if (onclick.equals("carros")) {
 
                 List<MarcaItem> items = new ArrayList<>();
-                items.add(new MarcaItem(ResourcesCompat.getDrawable(getResources(), R.drawable.audilogo, null), "audi"));
-                items.add(new MarcaItem(ResourcesCompat.getDrawable(getResources(), R.drawable.jaguarlogo, null), "audi"));
-                items.add(new MarcaItem(ResourcesCompat.getDrawable(getResources(), R.drawable.mercedeslogo, null), "audi"));
-                items.add(new MarcaItem(ResourcesCompat.getDrawable(getResources(), R.drawable.bmwlogo, null), "audi"));
                 adapter.addAll(items);
                 adapter.notifyDataSetChanged();
 
 
-            } else if (onclick.equals("motos")) {
+            } else {
 
                 List<MarcaItem> items = new ArrayList<>();
-                items.add(new MarcaItem(ResourcesCompat.getDrawable(getResources(), R.drawable.yamahalogo, null), "audi"));
-                items.add(new MarcaItem(ResourcesCompat.getDrawable(getResources(), R.drawable.ducatilogo, null), "audi"));
-                items.add(new MarcaItem(ResourcesCompat.getDrawable(getResources(), R.drawable.harleydavidsonlogo, null), "audi"));
-                items.add(new MarcaItem(ResourcesCompat.getDrawable(getResources(), R.drawable.hondalogo, null), "audi"));
                 adapter.addAll(items);
                 adapter.notifyDataSetChanged();
             }
@@ -64,9 +61,28 @@ public class MarcasActivity extends AppCompatActivity {
         }
 
 
+    }*/
+
+        List<MarcaItem> items = new ArrayList<>();
+
+        for (String marcaItem : marcaItems){
+           items.add(new MarcaItem(marcaItem));
+        }
+        adapter.addAll(items);
+        adapter.notifyDataSetChanged();
+
+
+
+
+
+
     }
 
+    public void showError(String message){
+        Toast.makeText(this, message, Toast.LENGTH_LONG).show();
 
+
+
+    }
 }
-
 
