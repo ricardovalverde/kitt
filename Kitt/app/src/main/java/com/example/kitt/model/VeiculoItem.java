@@ -28,10 +28,6 @@ public class VeiculoItem extends Item<ViewHolder> {
     private final String ident;
 
 
-    public String getIdent() {
-        return ident;
-    }
-
     public VeiculoItem(String name, String desc, String icon_url, String ano, String ident) {
         this.name = name;
         this.desc = desc;
@@ -40,9 +36,14 @@ public class VeiculoItem extends Item<ViewHolder> {
         this.ident = ident;
     }
 
+    public String getIdent() {
+        return ident;
+    }
+
     public String getName() {
         return name;
     }
+
     public String getAno() {
         return ano;
     }
@@ -55,7 +56,6 @@ public class VeiculoItem extends Item<ViewHolder> {
     public String getIcon_url() {
         return icon_url;
     }
-
 
 
     @Override

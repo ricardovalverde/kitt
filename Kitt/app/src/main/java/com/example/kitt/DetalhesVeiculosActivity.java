@@ -42,15 +42,13 @@ public class DetalhesVeiculosActivity extends AppCompatActivity {
         }
 
 
-
-
     }
 
     public void showDetails(List<String> list) {
         ImageSlider imageSlider = findViewById(R.id.slider);
         List<SlideModel> slideModels = new ArrayList<>();
         for (String item : list) {
-            slideModels.add(new SlideModel(item, (name+ " "+ano), ScaleTypes.CENTER_CROP));
+            slideModels.add(new SlideModel(item, (name + " " + ano), ScaleTypes.CENTER_CROP));
 
         }
         imageSlider.setImageList(slideModels, null);
