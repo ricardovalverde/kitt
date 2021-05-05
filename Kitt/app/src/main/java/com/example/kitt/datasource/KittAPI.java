@@ -12,7 +12,7 @@ public interface KittAPI {
 
 
 
-    @GET("marcas/icon_url")
+    @GET("marcas_carros/")
     Call<List<MarcaItem>> findAllLogo();
 
 
