@@ -1,8 +1,8 @@
 package com.example.kitt;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class DetalhesVeiculosActivity extends AppCompatActivity {
 

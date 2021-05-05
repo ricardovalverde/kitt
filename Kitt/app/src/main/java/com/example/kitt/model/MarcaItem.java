@@ -1,7 +1,6 @@
 package com.example.kitt.model;
 
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
@@ -18,8 +17,13 @@ public class MarcaItem extends Item<ViewHolder> {
     private final String icon_url;
     @SerializedName("name")
     private final String names;
-    @SerializedName("categoria")
-    private final String categoria;
+
+
+    public MarcaItem(String icon_url, String names) {
+        this.icon_url = icon_url;
+        this.names = names;
+
+    }
 
     public String getIcon_url() {
         return icon_url;
@@ -29,24 +33,11 @@ public class MarcaItem extends Item<ViewHolder> {
         return names;
     }
 
-    public String getCategoria() {
-        return categoria;
-    }
-
-
-    public MarcaItem(String icon_url, String names, String categoria) {
-        this.icon_url = icon_url;
-        this.names = names;
-        this.categoria = categoria;
-    }
-
 
     @Override
     public void bind(@NonNull ViewHolder viewHolder, int position) {
         ImageView imageView = viewHolder.itemView.findViewById(R.id.logo);
-
-
-
+        Picasso.get().load(icon_url).into(imageView);
 
 
     }

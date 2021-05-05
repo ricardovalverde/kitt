@@ -4,14 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.kitt.datasource.LogoRemote;
 import com.example.kitt.model.MarcaItem;
-import com.example.kitt.presentation.BrandPresenter;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,16 +21,14 @@ public class MainActivity extends AppCompatActivity {
 
         textCarros.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, MarcaItem.class);
-            intent.putExtra(MarcasActivity.click,"1");
+            intent.putExtra(MarcasActivity.click, "1");
 
 
         });
         textMotos.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, MarcaItem.class);
-            intent.putExtra(MarcasActivity.click,"2");
+            intent.putExtra(MarcasActivity.click, "2");
         });
-
-
 
 
     }

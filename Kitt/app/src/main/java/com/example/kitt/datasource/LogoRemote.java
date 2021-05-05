@@ -10,17 +10,11 @@ import retrofit2.Response;
 
 public class LogoRemote {
 
-    public interface CallListLogoDataSource {
-        void onSuccess(List<MarcaItem> item);
-        void onError(String errorMessage);
-    }
-
-
     public void findAllLogo(CallListLogoDataSource callback) {
         HTTPClient.retrofit().create(KittAPI.class).findAllLogo().enqueue(new Callback<List<MarcaItem>>() {
             @Override
             public void onResponse(Call<List<MarcaItem>> call, Response<List<MarcaItem>> response) {
-                if(response.isSuccessful()){
+                if (response.isSuccessful()) {
                     callback.onSuccess(response.body());
                 }
             }
@@ -32,10 +26,13 @@ public class LogoRemote {
         });
 
 
+    }
 
 
+    public interface CallListLogoDataSource {
+        void onSuccess(List<MarcaItem> item);
 
-
+        void onError(String errorMessage);
     }
 
 

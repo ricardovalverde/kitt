@@ -1,5 +1,6 @@
 package com.example.kitt;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -12,12 +13,14 @@ import com.example.kitt.model.MarcaItem;
 import com.example.kitt.presentation.BrandPresenter;
 import com.xwray.groupie.GroupAdapter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MarcasActivity extends AppCompatActivity {
 
     public static final String click = null;
+    public static String marca = null;
+
+
     GroupAdapter adapter = new GroupAdapter();
 
 
@@ -30,8 +33,20 @@ public class MarcasActivity extends AppCompatActivity {
         RecyclerView recyclerView = findViewById(R.id.recyclerViewMarcas);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+
         LogoRemote logoRemote = new LogoRemote();
-        new BrandPresenter(logoRemote,this).requestAllLogos();
+        new BrandPresenter(logoRemote, this).requestAllLogos();
+
+        adapter.setOnItemClickListener((item, view) -> {
+
+            Intent intent = new Intent(MarcasActivity.this, VeiculoActivity.class);
+            marca = ((MarcaItem) item).getNames();
+            intent.putExtra(VeiculoActivity.MARCA, marca);
+            startActivity(intent);
+
+
+        });
 
 
     }
@@ -43,15 +58,10 @@ public class MarcasActivity extends AppCompatActivity {
         adapter.notifyDataSetChanged();
 
 
-
-
-
-
     }
 
-    public void showError(String message){
+    public void showError(String message) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
-
 
 
     }
