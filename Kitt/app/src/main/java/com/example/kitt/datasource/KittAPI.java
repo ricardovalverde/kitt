@@ -19,6 +19,9 @@ public interface KittAPI {
     @GET("{marca}")
     Call<List<VeiculoItem>> findAllVeiculos(@Path("marca") String marca);
 
+    @GET("{id}")
+    Call<List<String>> findDetailsVehicles(@Path("id") String id);
+
 
 }
 

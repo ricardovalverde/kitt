@@ -5,9 +5,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
-import com.example.kitt.MarcasActivity;
 import com.example.kitt.R;
-import com.example.kitt.VeiculoActivity;
 import com.google.gson.annotations.SerializedName;
 import com.squareup.picasso.Picasso;
 import com.xwray.groupie.Item;
@@ -26,18 +24,29 @@ public class VeiculoItem extends Item<ViewHolder> {
     @SerializedName("ano")
     private final String ano;
 
+    @SerializedName("ident")
+    private final String ident;
 
 
-    public VeiculoItem(String name, String desc, String icon_url, String ano) {
+    public String getIdent() {
+        return ident;
+    }
+
+    public VeiculoItem(String name, String desc, String icon_url, String ano, String ident) {
         this.name = name;
         this.desc = desc;
         this.icon_url = icon_url;
         this.ano = ano;
+        this.ident = ident;
     }
 
     public String getName() {
         return name;
     }
+    public String getAno() {
+        return ano;
+    }
+
 
     public String getDesc() {
         return desc;
@@ -46,6 +55,7 @@ public class VeiculoItem extends Item<ViewHolder> {
     public String getIcon_url() {
         return icon_url;
     }
+
 
 
     @Override
