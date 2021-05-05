@@ -46,9 +46,16 @@ public class VeiculoActivity extends AppCompatActivity {
         TextView textView = findViewById(R.id.marca_vehicle);
 
         String marca = getIntent().getExtras().getString(MARCA);
-        String cap = marca.substring(0, 1).toUpperCase() + marca.substring(1);
+        if(!marca.equals("bmw")){
+            String cap = marca.substring(0, 1).toUpperCase() + marca.substring(1);
+            textView.setText(cap);
+        }
+        else {
+            textView.setText(marca.toUpperCase());
+        }
 
-        textView.setText(cap);
+
+
 
         adapter.addAll(veiculoItem);
         adapter.notifyDataSetChanged();
