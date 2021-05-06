@@ -1,6 +1,7 @@
 package com.example.kitt.activity;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -23,8 +24,6 @@ public class VeiculoActivity extends AppCompatActivity {
     static final String MARCA = "marca";
 
     private final GroupAdapter adapter = new GroupAdapter();
-    private ProgressBar progressBar;
-    private ImageView arrowBack;
 
 
     @Override
@@ -33,11 +32,19 @@ public class VeiculoActivity extends AppCompatActivity {
         setContentView(R.layout.veiculos_layout);
 
 
-        arrowBack = findViewById(R.id.backArrow);
-        RecyclerView recyclerView = findViewById(R.id.recyclerViewVeiculos);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        ImageView arrowBack = findViewById(R.id.backArrow);
 
+        RecyclerView recyclerView = findViewById(R.id.recyclerViewVeiculos);
+        Configuration configuration = getResources().getConfiguration();
+
+
+        if (configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        } else {
+            recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        }
+
+        recyclerView.setAdapter(adapter);
 
         if (getIntent().getExtras() != null) {
 
@@ -90,7 +97,7 @@ public class VeiculoActivity extends AppCompatActivity {
     }
 
     public void hideProgressBar() {
-        progressBar = findViewById(R.id.progressBarVeiculos);
+        ProgressBar progressBar = findViewById(R.id.progressBarVeiculos);
         progressBar.setVisibility(View.GONE);
 
 
