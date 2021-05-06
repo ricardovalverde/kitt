@@ -3,6 +3,7 @@ package com.example.kitt;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -22,14 +23,16 @@ public class VeiculoActivity extends AppCompatActivity {
 
     private final GroupAdapter adapter = new GroupAdapter();
     private ProgressBar progressBar;
+    private ImageView arrowBack;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.veiculos_layout);
 
+
+        arrowBack = findViewById(R.id.backArrow);
         RecyclerView recyclerView = findViewById(R.id.recyclerViewVeiculos);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -41,7 +44,6 @@ public class VeiculoActivity extends AppCompatActivity {
             VeiculoRemote veiculoRemote = new VeiculoRemote();
             VeiculoPresenter veiculoPresenter = new VeiculoPresenter(veiculoRemote, this);
             veiculoPresenter.requestVeiculos(marca);
-
 
         }
         adapter.setOnItemClickListener((item, view) -> {
@@ -59,6 +61,10 @@ public class VeiculoActivity extends AppCompatActivity {
             intent.putExtra(DetalhesVeiculosActivity.ANO, ano);
             startActivity(intent);
 
+
+        });
+        arrowBack.setOnClickListener(v -> {
+            finish();
 
         });
 
