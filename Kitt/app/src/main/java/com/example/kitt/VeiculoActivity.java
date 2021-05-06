@@ -2,6 +2,8 @@ package com.example.kitt;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +21,7 @@ public class VeiculoActivity extends AppCompatActivity {
     static final String MARCA = "marca";
 
     private final GroupAdapter adapter = new GroupAdapter();
+    private ProgressBar progressBar;
 
 
     @Override
@@ -38,6 +41,8 @@ public class VeiculoActivity extends AppCompatActivity {
             VeiculoRemote veiculoRemote = new VeiculoRemote();
             VeiculoPresenter veiculoPresenter = new VeiculoPresenter(veiculoRemote, this);
             veiculoPresenter.requestVeiculos(marca);
+
+
         }
         adapter.setOnItemClickListener((item, view) -> {
 
@@ -76,5 +81,13 @@ public class VeiculoActivity extends AppCompatActivity {
 
 
     }
+
+    public void hideProgressBar() {
+        progressBar = findViewById(R.id.progressBarVeiculos);
+        progressBar.setVisibility(View.GONE);
+
+
+    }
+
 
 }

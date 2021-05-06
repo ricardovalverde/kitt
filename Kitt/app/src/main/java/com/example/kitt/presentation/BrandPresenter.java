@@ -33,4 +33,9 @@ public class BrandPresenter implements LogoRemote.CallListLogoDataSource {
     public void onError(String errorMessage) {
         this.view.showError(errorMessage);
     }
+
+    @Override
+    public void onComplete() {
+        this.view.hideProgressBar();
+    }
 }

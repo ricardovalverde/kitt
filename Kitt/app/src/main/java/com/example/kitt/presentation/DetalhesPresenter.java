@@ -28,4 +28,9 @@ public class DetalhesPresenter implements DetalhesRemote.CallVeiculosDetalhes {
     public void onError(String errorMessage) {
 
     }
+
+    @Override
+    public void onComplete() {
+        this.view.hideProgressBar();
+    }
 }

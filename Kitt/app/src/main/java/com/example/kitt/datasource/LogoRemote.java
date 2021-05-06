@@ -17,11 +17,13 @@ public class LogoRemote {
                 if (response.isSuccessful()) {
                     callback.onSuccess(response.body());
                 }
+                callback.onComplete();
             }
 
             @Override
             public void onFailure(Call<List<MarcaItem>> call, Throwable t) {
                 callback.onError(t.getMessage());
+                callback.onComplete();
             }
         });
 
@@ -33,6 +35,8 @@ public class LogoRemote {
         void onSuccess(List<MarcaItem> item);
 
         void onError(String errorMessage);
+
+        void onComplete();
     }
 
 

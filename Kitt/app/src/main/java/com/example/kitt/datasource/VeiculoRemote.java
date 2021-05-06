@@ -18,14 +18,16 @@ public class VeiculoRemote {
                         if (response.isSuccessful()) {
                             callback.onSuccess(response.body());
                         }
+                        callback.onComplete();
                     }
 
                     @Override
                     public void onFailure(Call<List<VeiculoItem>> call, Throwable t) {
                         callback.onError(t.getMessage());
-
+                        callback.onComplete();
 
                     }
+
                 });
 
 
@@ -35,6 +37,8 @@ public class VeiculoRemote {
         void onSuccess(List<VeiculoItem> veiculoItemList);
 
         void onError(String errorMessage);
+
+        void onComplete();
     }
 
 

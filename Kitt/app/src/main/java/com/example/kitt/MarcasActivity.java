@@ -2,6 +2,8 @@ package com.example.kitt;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,10 +21,8 @@ public class MarcasActivity extends AppCompatActivity {
 
     public static final String click = null;
     public static String marca = null;
-
-
     GroupAdapter adapter = new GroupAdapter();
-
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +62,13 @@ public class MarcasActivity extends AppCompatActivity {
 
     public void showError(String message) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
+
+
+    }
+
+    public void hideProgressBar() {
+        progressBar = findViewById(R.id.progressBarMarcas);
+        progressBar.setVisibility(View.GONE);
 
 
     }

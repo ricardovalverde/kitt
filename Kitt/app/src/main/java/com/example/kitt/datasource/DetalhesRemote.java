@@ -16,11 +16,13 @@ public class DetalhesRemote {
                         if (response.isSuccessful()) {
                             callback.onSuccess(response.body());
                         }
+                        callback.onComplete();
                     }
 
                     @Override
                     public void onFailure(Call<List<String>> call, Throwable t) {
                         callback.onError(t.getMessage());
+                        callback.onComplete();
                     }
                 });
 
@@ -32,6 +34,8 @@ public class DetalhesRemote {
         void onSuccess(List<String> response);
 
         void onError(String errorMessage);
+
+        void onComplete();
     }
 }
 

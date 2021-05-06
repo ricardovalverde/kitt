@@ -17,6 +17,7 @@ public class VeiculoPresenter implements VeiculoRemote.CallListVeiculoDataRemote
     }
 
     public void requestVeiculos(String marca) {
+
         this.veiculoRemote.findAllVeiculos(this, marca);
     }
 
@@ -29,5 +30,10 @@ public class VeiculoPresenter implements VeiculoRemote.CallListVeiculoDataRemote
     @Override
     public void onError(String errorMessage) {
 
+    }
+
+    @Override
+    public void onComplete() {
+        this.view.hideProgressBar();
     }
 }

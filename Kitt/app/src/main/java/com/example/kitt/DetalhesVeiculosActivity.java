@@ -1,6 +1,8 @@
 package com.example.kitt;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +21,7 @@ public class DetalhesVeiculosActivity extends AppCompatActivity {
     static final String ID = "1";
     static final String NAME = "name";
     static final String ANO = "ano";
+    private ProgressBar progressBar;
     private String descricao;
     private String name;
     private String ano;
@@ -59,5 +62,11 @@ public class DetalhesVeiculosActivity extends AppCompatActivity {
 
 
     }
+
+    public void hideProgressBar() {
+        progressBar = findViewById(R.id.progressBarDetalhes);
+        progressBar.setVisibility(View.GONE);
+    }
+
 
 }
