@@ -1,6 +1,6 @@
 package com.example.kitt.presentation;
 
-import com.example.kitt.VeiculoActivity;
+import com.example.kitt.activity.VeiculoActivity;
 import com.example.kitt.datasource.VeiculoRemote;
 import com.example.kitt.model.VeiculoItem;
 

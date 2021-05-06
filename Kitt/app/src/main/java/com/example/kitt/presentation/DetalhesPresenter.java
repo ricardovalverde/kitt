@@ -1,6 +1,6 @@
 package com.example.kitt.presentation;
 
-import com.example.kitt.DetalhesVeiculosActivity;
+import com.example.kitt.activity.DetalhesVeiculosActivity;
 import com.example.kitt.datasource.DetalhesRemote;
 
 import java.util.List;

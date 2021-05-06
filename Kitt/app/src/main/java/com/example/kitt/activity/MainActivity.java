@@ -1,4 +1,4 @@
-package com.example.kitt;
+package com.example.kitt.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,6 +6,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.kitt.R;
 import com.example.kitt.model.MarcaItem;
 
 public class MainActivity extends AppCompatActivity {

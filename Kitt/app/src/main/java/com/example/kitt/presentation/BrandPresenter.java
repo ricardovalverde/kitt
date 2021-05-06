@@ -1,6 +1,6 @@
 package com.example.kitt.presentation;
 
-import com.example.kitt.MarcasActivity;
+import com.example.kitt.activity.MarcasActivity;
 import com.example.kitt.datasource.LogoRemote;
 import com.example.kitt.model.MarcaItem;
 

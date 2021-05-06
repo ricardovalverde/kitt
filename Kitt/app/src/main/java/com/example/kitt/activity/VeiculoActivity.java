@@ -1,4 +1,4 @@
-package com.example.kitt;
+package com.example.kitt.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.kitt.R;
 import com.example.kitt.datasource.VeiculoRemote;
 import com.example.kitt.model.VeiculoItem;
 import com.example.kitt.presentation.VeiculoPresenter;

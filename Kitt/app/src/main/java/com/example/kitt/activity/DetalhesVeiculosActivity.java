@@ -1,4 +1,4 @@
-package com.example.kitt;
+package com.example.kitt.activity;
 
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
+import com.example.kitt.R;
 import com.example.kitt.datasource.DetalhesRemote;
 import com.example.kitt.presentation.DetalhesPresenter;
 
