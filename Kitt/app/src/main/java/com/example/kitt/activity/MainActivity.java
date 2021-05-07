@@ -1,7 +1,9 @@
 package com.example.kitt.activity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, MarcaItem.class);
             intent.putExtra(MarcasActivity.click, "2");
         });
+
 
 
     }
