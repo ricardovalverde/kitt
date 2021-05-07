@@ -1,6 +1,7 @@
 package com.example.kitt.datasource;
 
 import com.example.kitt.model.MarcaItem;
+import com.example.kitt.model.Noticias;
 import com.example.kitt.model.VeiculoItem;
 
 import java.util.List;
@@ -16,6 +17,10 @@ public interface KittAPI {
     @GET("marcas_carros/")
     Call<List<MarcaItem>> findAllLogo();
 
+    @GET("revistas/")
+    Call<List<Noticias>> findAllRevistas();
+
+
     @GET("{marca}")
     Call<List<VeiculoItem>> findAllVeiculos(@Path("marca") String marca);
 
@@ -24,4 +29,5 @@ public interface KittAPI {
 
 
 }
+
 

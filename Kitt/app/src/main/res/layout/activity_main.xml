@@ -39,22 +39,38 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="20dp"
         android:fontFamily="@font/robotolight"
         android:text="@string/noticias"
         android:textColor="@color/white"
         android:textSize="25sp"
         android:textStyle="bold"
-         />
+        android:layout_marginStart="10dp"
+        app:layout_constraintBottom_toTopOf="@id/noticias_item"
+        app:layout_constraintStart_toStartOf="@id/noticias_item" />
 
-    <Button
-        android:id="@+id/btnteste"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/noticias_item"
+        android:layout_width="match_parent"
+        android:layout_height="410px"
+        android:layout_marginBottom="100dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        android:backgroundTint="#0D000000"
+        app:cardCornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:text="TESTE"/>
+        app:layout_constraintStart_toStartOf="parent">
+        <include layout="@layout/noticias_item"/>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewNoticias"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:layout_editor_absoluteX="141dp"
+            tools:layout_editor_absoluteY="279dp" />
+
+    </androidx.cardview.widget.CardView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
