@@ -17,7 +17,7 @@ public class BrandPresenter implements LogoRemote.CallListLogoDataSource {
         this.view = view;
     }
 
-    public void requestAllLogos() {
+    public void requestAllCarLogo() {
         this.logoRemote.findAllLogo(this);
     }
 

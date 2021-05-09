@@ -9,11 +9,11 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class RevistasRemote {
-    public void findAllRevistas(CallListRevistasDatasource revistasDatasource){
+    public void findAllRevistas(CallListRevistasDatasource revistasDatasource) {
         HTTPClient.retrofit().create(KittAPI.class).findAllRevistas().enqueue(new Callback<List<Noticias>>() {
             @Override
             public void onResponse(Call<List<Noticias>> call, Response<List<Noticias>> response) {
-                if(response.isSuccessful()){
+                if (response.isSuccessful()) {
                     revistasDatasource.onSucces(response.body());
                 }
             }
@@ -26,10 +26,11 @@ public class RevistasRemote {
     }
 
 
-
-    public interface CallListRevistasDatasource{
+    public interface CallListRevistasDatasource {
         void onSucces(List<Noticias> response);
+
         void onError(String errorMessage);
+
         void onComplete();
 
 

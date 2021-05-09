@@ -4,48 +4,71 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/v_black"
+    android:background="#88313132"
     tools:context=".activity.MainActivity">
 
-    <TextView
+
+    <ImageView
         android:id="@+id/carros"
+        android:layout_width="140dp"
+        android:layout_height="93dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="48dp"
+        android:src="@drawable/pngegg"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        />
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="3dp"
         android:fontFamily="@font/robotolight"
         android:text="@string/carros"
         android:textColor="@color/white"
-        android:textSize="35sp"
+        android:textSize="12sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/carros"
+        app:layout_constraintStart_toStartOf="@+id/carros"
+        app:layout_constraintTop_toBottomOf="@+id/carros" />
+
+    <ImageView
+        android:id="@+id/motos"
+        android:layout_width="140dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="20dp"
+        android:src="@drawable/motorcyclerincon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        />
 
     <TextView
-        android:id="@+id/motos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="12dp"
         android:fontFamily="@font/robotolight"
         android:text="@string/motos"
         android:textColor="@color/white"
-        android:textSize="35sp"
+        android:textSize="12sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.384"
-        app:layout_constraintStart_toEndOf="@+id/carros"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/motos"
+        app:layout_constraintHorizontal_bias="0.471"
+        app:layout_constraintStart_toStartOf="@+id/motos"
+        app:layout_constraintTop_toBottomOf="@+id/motos" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
         android:layout_marginBottom="20dp"
         android:fontFamily="@font/robotolight"
         android:text="@string/noticias"
         android:textColor="@color/white"
         android:textSize="25sp"
         android:textStyle="bold"
-        android:layout_marginStart="10dp"
         app:layout_constraintBottom_toTopOf="@id/noticias_item"
         app:layout_constraintStart_toStartOf="@id/noticias_item" />
 
@@ -53,14 +76,15 @@
         android:id="@+id/noticias_item"
         android:layout_width="match_parent"
         android:layout_height="410px"
-        android:layout_marginBottom="100dp"
-        android:layout_marginEnd="10dp"
         android:layout_marginStart="10dp"
-        android:backgroundTint="#0D000000"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="100dp"
+        android:backgroundTint="@android:color/transparent"
         app:cardCornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent">
-        <include layout="@layout/noticias_item"/>
+
+        <include layout="@layout/noticias_item" />
 
 
         <androidx.recyclerview.widget.RecyclerView
@@ -71,6 +95,17 @@
             tools:layout_editor_absoluteY="279dp" />
 
     </androidx.cardview.widget.CardView>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/ic_baseline_chevron_right_24"
+        app:layout_constraintEnd_toEndOf="@+id/noticias_item"
+        app:layout_constraintStart_toStartOf="@+id/noticias_item"
+        app:layout_constraintTop_toBottomOf="@+id/noticias_item"
+
+        />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -16,15 +16,9 @@ public class RevistasPresenter implements RevistasRemote.CallListRevistasDatasou
     }
 
 
-
-
-
-
-    public void requestAllRevistas(){
+    public void requestAllRevistas() {
         this.revistasRemote.findAllRevistas(this);
     }
-
-
 
 
     @Override

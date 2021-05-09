@@ -14,11 +14,6 @@ public class Noticias extends Item<ViewHolder> {
 
     @SerializedName("icon_url")
     private final String icon_url;
-
-    public String getUrl() {
-        return url;
-    }
-
     @SerializedName("url")
     private final String url;
 
@@ -27,6 +22,9 @@ public class Noticias extends Item<ViewHolder> {
         this.url = url;
     }
 
+    public String getUrl() {
+        return url;
+    }
 
     @Override
     public void bind(@NonNull ViewHolder viewHolder, int position) {
