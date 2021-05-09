@@ -94,18 +94,22 @@
             tools:layout_editor_absoluteX="141dp"
             tools:layout_editor_absoluteY="279dp" />
 
-    </androidx.cardview.widget.CardView>
 
+
+    </androidx.cardview.widget.CardView>
     <ImageView
+        android:id="@+id/arrowRigth"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-        android:src="@drawable/ic_baseline_chevron_right_24"
         app:layout_constraintEnd_toEndOf="@+id/noticias_item"
         app:layout_constraintStart_toStartOf="@+id/noticias_item"
         app:layout_constraintTop_toBottomOf="@+id/noticias_item"
 
         />
+
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

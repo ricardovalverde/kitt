@@ -32,6 +32,7 @@ public class Noticias extends Item<ViewHolder> {
         Picasso.get().load(icon_url).into(imageView);
 
 
+
     }
 
     @Override

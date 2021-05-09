@@ -1,10 +1,15 @@
 package com.example.kitt.model;
 
+import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.res.ResourcesCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.kitt.R;
+import com.example.kitt.activity.MainActivity;
 import com.google.gson.annotations.SerializedName;
 import com.squareup.picasso.Picasso;
 import com.xwray.groupie.Item;
@@ -25,9 +30,6 @@ public class MarcaItem extends Item<ViewHolder> {
 
     }
 
-    public String getIcon_url() {
-        return icon_url;
-    }
 
     public String getNames() {
         return names;
@@ -40,7 +42,11 @@ public class MarcaItem extends Item<ViewHolder> {
         Picasso.get().load(icon_url).into(imageView);
 
 
+
+
     }
+
+
 
     @Override
     public int getLayout() {

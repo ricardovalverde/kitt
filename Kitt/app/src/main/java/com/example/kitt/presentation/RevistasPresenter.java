@@ -2,6 +2,7 @@ package com.example.kitt.presentation;
 
 import com.example.kitt.activity.MainActivity;
 import com.example.kitt.datasource.RevistasRemote;
+import com.example.kitt.model.MarcaItem;
 import com.example.kitt.model.Noticias;
 
 import java.util.List;
