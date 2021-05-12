@@ -46,7 +46,6 @@ public class RevistasRemote {
     }
 
 
-
     public interface CallListRevistasDatasource {
         void onSuccesCar(List<Noticias> response);
 

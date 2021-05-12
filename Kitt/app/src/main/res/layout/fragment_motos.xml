@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MotoFragmentActivity">
+    tools:context=".activity.MotoFragmentActivity">
 
 
     <LinearLayout
@@ -51,11 +51,12 @@
         android:layout_marginBottom="55dp"
         android:backgroundTint="@android:color/transparent"
         app:cardCornerRadius="20dp">
+
         <ProgressBar
             android:id="@+id/progress_bar_motof"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center" />
 
         <include layout="@layout/noticias_item" />
 

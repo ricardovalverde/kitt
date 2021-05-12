@@ -1,7 +1,7 @@
 package com.example.kitt.presentation;
 
-import com.example.kitt.CarFragmentActivity;
-import com.example.kitt.MotoFragmentActivity;
+import com.example.kitt.activity.CarFragmentActivity;
+import com.example.kitt.activity.MotoFragmentActivity;
 import com.example.kitt.datasource.RevistasRemote;
 import com.example.kitt.model.Noticias;
 
@@ -17,6 +17,7 @@ public class RevistasPresenter implements RevistasRemote.CallListRevistasDatasou
         this.revistasRemote = revistasRemote;
         this.viewCar = view;
     }
+
     public RevistasPresenter(RevistasRemote revistasRemote, MotoFragmentActivity view) {
         this.revistasRemote = revistasRemote;
         this.viewMoto = view;

@@ -52,8 +52,7 @@ public class MarcasActivity extends AppCompatActivity {
 
             if (change.equals("1")) {
                 new BrandPresenter(logoRemote, this).requestAllCarLogo();
-            }
-            else {
+            } else {
                 new BrandPresenter(logoRemote, this).requestAllMotoLogo();
             }
 

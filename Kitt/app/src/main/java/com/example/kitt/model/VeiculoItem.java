@@ -53,10 +53,6 @@ public class VeiculoItem extends Item<ViewHolder> {
         return desc;
     }
 
-    public String getIcon_url() {
-        return icon_url;
-    }
-
 
     @Override
     public void bind(@NonNull ViewHolder viewHolder, int position) {

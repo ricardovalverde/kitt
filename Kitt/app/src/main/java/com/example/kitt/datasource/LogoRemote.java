@@ -29,11 +29,12 @@ public class LogoRemote {
 
 
     }
-    public void findAllLogoMoto(CallListLogoDataSource callback){
+
+    public void findAllLogoMoto(CallListLogoDataSource callback) {
         HTTPClient.retrofit().create(KittAPI.class).findAllLogoMoto().enqueue(new Callback<List<MarcaItem>>() {
             @Override
             public void onResponse(Call<List<MarcaItem>> call, Response<List<MarcaItem>> response) {
-                if(response.isSuccessful()){
+                if (response.isSuccessful()) {
                     callback.onSuccess(response.body());
 
                 }
@@ -42,8 +43,8 @@ public class LogoRemote {
 
             @Override
             public void onFailure(Call<List<MarcaItem>> call, Throwable t) {
-                    callback.onError(t.getMessage());
-                    callback.onComplete();
+                callback.onError(t.getMessage());
+                callback.onComplete();
             }
 
         });

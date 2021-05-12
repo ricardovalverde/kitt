@@ -1,4 +1,4 @@
-package com.example.kitt;
+package com.example.kitt.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,8 +17,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.kitt.activity.MarcasActivity;
-import com.example.kitt.activity.NoticiasActivity;
+import com.example.kitt.R;
 import com.example.kitt.datasource.RevistasRemote;
 import com.example.kitt.model.Noticias;
 import com.example.kitt.presentation.RevistasPresenter;
@@ -34,15 +33,12 @@ import java.util.List;
  * create an instance of this fragment.
  */
 public class MotoFragmentActivity extends Fragment {
-    private GroupAdapter adapter = new GroupAdapter();
-    ProgressBar progressBar;
-
-
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    ProgressBar progressBar;
+    private GroupAdapter adapter = new GroupAdapter();
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -83,11 +79,10 @@ public class MotoFragmentActivity extends Fragment {
         recyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
             @Override
             public boolean onInterceptTouchEvent(@NonNull @NotNull RecyclerView rv, @NonNull @NotNull MotionEvent e) {
-                if (e.getAction()== MotionEvent.ACTION_MOVE){
+                if (e.getAction() == MotionEvent.ACTION_MOVE) {
                     recyclerView.getParent().requestDisallowInterceptTouchEvent(true);
 
                 }
-
 
 
                 return false;
@@ -105,23 +100,19 @@ public class MotoFragmentActivity extends Fragment {
         });
 
 
-
-
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                 ImageView imageView1 = viewMain.findViewById(R.id.arrowRigth);
                 int lastItemScroll = linearLayoutR.findLastCompletelyVisibleItemPosition();
                 int lastItemList = linearLayoutR.getItemCount();
-                if(lastItemScroll == (lastItemList-1)){
+                if (lastItemScroll == (lastItemList - 1)) {
 
-                    imageView1.setImageDrawable(ResourcesCompat.getDrawable(getResources(),R.drawable.ic_baseline_keyboard_arrow_left_24,null));
+                    imageView1.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.ic_baseline_keyboard_arrow_left_24, null));
+                } else {
+                    imageView1.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.ic_baseline_chevron_right_24, null));
+
                 }
-                else {
-                    imageView1.setImageDrawable(ResourcesCompat.getDrawable(getResources(),R.drawable.ic_baseline_chevron_right_24,null));
-
-                }
-
 
 
             }
@@ -133,12 +124,7 @@ public class MotoFragmentActivity extends Fragment {
             startActivity(intent);
 
 
-
         });
-
-
-
-
 
 
         linearLayout.setOnClickListener(v -> {
@@ -148,25 +134,20 @@ public class MotoFragmentActivity extends Fragment {
         });
 
 
-
-
-
-
-
-
-
-
         return viewMain;
     }
+
     public void showRevistas(List<Noticias> list) {
 
         adapter.addAll(list);
         adapter.notifyDataSetChanged();
     }
+
     public void showError(String message) {
         Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
     }
-    public void hideProgressBar(){
+
+    public void hideProgressBar() {
         progressBar = getView().findViewById(R.id.progress_bar_motof);
         progressBar.setVisibility(View.GONE);
     }

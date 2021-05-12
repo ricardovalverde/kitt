@@ -5,9 +5,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.example.kitt.CarFragmentActivity;
-import com.example.kitt.MotoFragmentActivity;
-
 import org.jetbrains.annotations.NotNull;
 
 public class ViewPagerAdapter extends FragmentStateAdapter {
@@ -19,14 +16,10 @@ public class ViewPagerAdapter extends FragmentStateAdapter {
     @NotNull
     @Override
     public Fragment createFragment(int position) {
-        switch (position){
-            case 0:
-                return new CarFragmentActivity();
-            default:
-                return new MotoFragmentActivity();
-
-
+        if (position == 0) {
+            return new CarFragmentActivity();
         }
+        return new MotoFragmentActivity();
     }
 
     @Override

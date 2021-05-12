@@ -1,14 +1,7 @@
-package com.example.kitt;
+package com.example.kitt.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.core.content.res.ResourcesCompat;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -18,8 +11,13 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.example.kitt.activity.MarcasActivity;
-import com.example.kitt.activity.NoticiasActivity;
+import androidx.annotation.NonNull;
+import androidx.core.content.res.ResourcesCompat;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.kitt.R;
 import com.example.kitt.datasource.RevistasRemote;
 import com.example.kitt.model.Noticias;
 import com.example.kitt.presentation.RevistasPresenter;
@@ -35,15 +33,12 @@ import java.util.List;
  * create an instance of this fragment.
  */
 public class CarFragmentActivity extends Fragment {
-    private GroupAdapter adapter = new GroupAdapter();
-    ProgressBar progressBar;
-
-
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    ProgressBar progressBar;
+    private GroupAdapter adapter = new GroupAdapter();
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -79,11 +74,6 @@ public class CarFragmentActivity extends Fragment {
         }
 
 
-
-
-
-
-
     }
 
     @Override
@@ -97,31 +87,28 @@ public class CarFragmentActivity extends Fragment {
         LinearLayoutManager linearLayoutR = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(linearLayoutR);
         recyclerView.setAdapter(adapter);
-       recyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
-           @Override
-           public boolean onInterceptTouchEvent(@NonNull @NotNull RecyclerView rv, @NonNull @NotNull MotionEvent e) {
-               if (e.getAction()== MotionEvent.ACTION_MOVE){
-                  recyclerView.getParent().requestDisallowInterceptTouchEvent(true);
+        recyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+            @Override
+            public boolean onInterceptTouchEvent(@NonNull @NotNull RecyclerView rv, @NonNull @NotNull MotionEvent e) {
+                if (e.getAction() == MotionEvent.ACTION_MOVE) {
+                    recyclerView.getParent().requestDisallowInterceptTouchEvent(true);
 
-               }
-
-
-
-               return false;
-           }
-
-           @Override
-           public void onTouchEvent(@NonNull @NotNull RecyclerView rv, @NonNull @NotNull MotionEvent e) {
-
-           }
-
-           @Override
-           public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
-
-           }
-       });
+                }
 
 
+                return false;
+            }
+
+            @Override
+            public void onTouchEvent(@NonNull @NotNull RecyclerView rv, @NonNull @NotNull MotionEvent e) {
+
+            }
+
+            @Override
+            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+
+            }
+        });
 
 
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -130,15 +117,13 @@ public class CarFragmentActivity extends Fragment {
                 ImageView imageView1 = viewMain.findViewById(R.id.arrowRigth);
                 int lastItemScroll = linearLayoutR.findLastCompletelyVisibleItemPosition();
                 int lastItemList = linearLayoutR.getItemCount();
-                if(lastItemScroll == (lastItemList-1)){
+                if (lastItemScroll == (lastItemList - 1)) {
 
-                    imageView1.setImageDrawable(ResourcesCompat.getDrawable(getResources(),R.drawable.ic_baseline_keyboard_arrow_left_24,null));
+                    imageView1.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.ic_baseline_keyboard_arrow_left_24, null));
+                } else {
+                    imageView1.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.ic_baseline_chevron_right_24, null));
+
                 }
-                else {
-                    imageView1.setImageDrawable(ResourcesCompat.getDrawable(getResources(),R.drawable.ic_baseline_chevron_right_24,null));
-
-                }
-
 
 
             }
@@ -150,12 +135,7 @@ public class CarFragmentActivity extends Fragment {
             startActivity(intent);
 
 
-
         });
-
-
-
-
 
 
         linearLayout.setOnClickListener(v -> {
@@ -165,25 +145,20 @@ public class CarFragmentActivity extends Fragment {
         });
 
 
-
-
-
-
-
-
-
-
         return viewMain;
     }
+
     public void showRevistas(List<Noticias> list) {
 
         adapter.addAll(list);
         adapter.notifyDataSetChanged();
     }
+
     public void showError(String message) {
         Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
     }
-    public void hideProgressBar(){
+
+    public void hideProgressBar() {
         progressBar = getView().findViewById(R.id.progress_bar_carf);
         progressBar.setVisibility(View.GONE);
     }
