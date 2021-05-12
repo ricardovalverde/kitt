@@ -9,29 +9,56 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class RevistasRemote {
-    public void findAllRevistas(CallListRevistasDatasource revistasDatasource) {
-        HTTPClient.retrofit().create(KittAPI.class).findAllRevistas().enqueue(new Callback<List<Noticias>>() {
+    public void findAllRevistasCarros(CallListRevistasDatasource revistasDatasource) {
+        HTTPClient.retrofit().create(KittAPI.class).findAllRevistasCarros().enqueue(new Callback<List<Noticias>>() {
             @Override
             public void onResponse(Call<List<Noticias>> call, Response<List<Noticias>> response) {
                 if (response.isSuccessful()) {
-                    revistasDatasource.onSucces(response.body());
+                    revistasDatasource.onSuccesCar(response.body());
                 }
+                revistasDatasource.onCompleteCar();
             }
 
             @Override
             public void onFailure(Call<List<Noticias>> call, Throwable t) {
-                revistasDatasource.onError(t.getMessage());
+                revistasDatasource.onErrorCar(t.getMessage());
+                revistasDatasource.onCompleteCar();
+            }
+        });
+    }
+
+    public void findAllRevistasMotos(CallListRevistasDatasource revistasDatasource) {
+        HTTPClient.retrofit().create(KittAPI.class).findAllRevistasMoto().enqueue(new Callback<List<Noticias>>() {
+            @Override
+            public void onResponse(Call<List<Noticias>> call, Response<List<Noticias>> response) {
+                if (response.isSuccessful()) {
+                    revistasDatasource.onSuccesMoto(response.body());
+                }
+                revistasDatasource.onCompleteMoto();
+            }
+
+            @Override
+            public void onFailure(Call<List<Noticias>> call, Throwable t) {
+                revistasDatasource.onErrorMoto(t.getMessage());
+                revistasDatasource.onCompleteMoto();
             }
         });
     }
 
 
+
     public interface CallListRevistasDatasource {
-        void onSucces(List<Noticias> response);
+        void onSuccesCar(List<Noticias> response);
 
-        void onError(String errorMessage);
+        void onSuccesMoto(List<Noticias> response);
 
-        void onComplete();
+        void onErrorCar(String errorMessage);
+
+        void onErrorMoto(String errorMessage);
+
+        void onCompleteCar();
+
+        void onCompleteMoto();
 
 
     }

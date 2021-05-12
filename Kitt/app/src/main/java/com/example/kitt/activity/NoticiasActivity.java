@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.kitt.R;
 
 public class NoticiasActivity extends AppCompatActivity {
-    static final String URL = "url";
+    public static final String URL = "url";
     private String url;
 
     @Override

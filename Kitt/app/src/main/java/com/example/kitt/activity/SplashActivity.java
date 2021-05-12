@@ -7,6 +7,7 @@ import android.os.Looper;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.kitt.CarFragmentActivity;
 import com.example.kitt.R;
 
 public class SplashActivity extends AppCompatActivity {
@@ -16,7 +17,7 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         new Handler(Looper.myLooper()).postDelayed(() -> {
-            Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+            Intent intent = new Intent(SplashActivity.this, CarFragmentActivity.class);
             startActivity(intent);
             finish();
         }, 4000);

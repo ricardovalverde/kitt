@@ -1,39 +1,64 @@
 package com.example.kitt.presentation;
 
-import com.example.kitt.activity.MainActivity;
+import com.example.kitt.CarFragmentActivity;
+import com.example.kitt.MotoFragmentActivity;
 import com.example.kitt.datasource.RevistasRemote;
-import com.example.kitt.model.MarcaItem;
 import com.example.kitt.model.Noticias;
 
 import java.util.List;
 
 public class RevistasPresenter implements RevistasRemote.CallListRevistasDatasource {
     private final RevistasRemote revistasRemote;
-    private final MainActivity view;
+    private CarFragmentActivity viewCar = null;
+    private MotoFragmentActivity viewMoto = null;
 
-    public RevistasPresenter(RevistasRemote revistasRemote, MainActivity view) {
+
+    public RevistasPresenter(RevistasRemote revistasRemote, CarFragmentActivity view) {
         this.revistasRemote = revistasRemote;
-        this.view = view;
+        this.viewCar = view;
+    }
+    public RevistasPresenter(RevistasRemote revistasRemote, MotoFragmentActivity view) {
+        this.revistasRemote = revistasRemote;
+        this.viewMoto = view;
     }
 
 
-    public void requestAllRevistas() {
-        this.revistasRemote.findAllRevistas(this);
+    public void requestAllRevistasCarros() {
+        this.revistasRemote.findAllRevistasCarros(this);
+    }
+
+    public void requestAllRevistasMotos() {
+        this.revistasRemote.findAllRevistasMotos(this);
     }
 
 
     @Override
-    public void onSucces(List<Noticias> response) {
-        view.showRevistas(response);
+    public void onSuccesCar(List<Noticias> response) {
+        viewCar.showRevistas(response);
     }
 
     @Override
-    public void onError(String errorMessage) {
-        view.showError(errorMessage);
+    public void onSuccesMoto(List<Noticias> response) {
+        viewMoto.showRevistas(response);
     }
 
     @Override
-    public void onComplete() {
-        //view.hideProgress();
+    public void onErrorCar(String errorMessage) {
+        viewCar.showError(errorMessage);
+    }
+
+    @Override
+    public void onErrorMoto(String errorMessage) {
+        viewMoto.showError(errorMessage);
+    }
+
+    @Override
+    public void onCompleteCar() {
+        viewCar.hideProgressBar();
+    }
+
+    @Override
+    public void onCompleteMoto() {
+        viewMoto.hideProgressBar();
     }
 }

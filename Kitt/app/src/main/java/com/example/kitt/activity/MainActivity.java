@@ -84,8 +84,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        RevistasRemote revistasRemote = new RevistasRemote();
-        new RevistasPresenter(revistasRemote, this).requestAllRevistas();
+
 
 
         adapter.setOnItemClickListener((item, view) -> {
@@ -101,29 +100,12 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    }
-
-    public void showRevistas(List<Noticias> list) {
-
-        adapter.addAll(list);
-        adapter.notifyDataSetChanged();
-    }
+    }}
 
 
 
 
-    public void showError(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
-
-
-    }
-    /*public void hideProgress(){
-        ProgressBar progressBar = findViewById(R.id.progressBarRevistas);
-        progressBar.setVisibility(View.GONE);
-
-    }*/
 
 
 
 
-}
