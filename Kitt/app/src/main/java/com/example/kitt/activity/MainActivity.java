@@ -6,8 +6,10 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -19,6 +21,8 @@ import com.example.kitt.model.MarcaItem;
 import com.example.kitt.model.Noticias;
 import com.example.kitt.presentation.RevistasPresenter;
 import com.xwray.groupie.GroupAdapter;
+
+import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -35,6 +39,25 @@ public class MainActivity extends AppCompatActivity {
 
 
          linearLayout = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+             @Override
+             public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                 imageView1 = findViewById(R.id.arrowRigth);
+                 int lastItemScroll = linearLayout.findLastCompletelyVisibleItemPosition();
+                 int lastItemList = linearLayout.getItemCount();
+                 if(lastItemScroll == (lastItemList-1)){
+
+                     imageView1.setImageDrawable(ResourcesCompat.getDrawable(getResources(),R.drawable.ic_baseline_keyboard_arrow_left_24,null));
+                 }
+                 else {
+                     imageView1.setImageDrawable(ResourcesCompat.getDrawable(getResources(),R.drawable.ic_baseline_chevron_right_24,null));
+
+                 }
+
+
+
+             }
+         });
 
 
         recyclerView.setLayoutManager(linearLayout);
@@ -45,8 +68,8 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        ImageView Carros = findViewById(R.id.carros);
-        ImageView Motos = findViewById(R.id.motos);
+        TextView Carros = findViewById(R.id.carros);
+        TextView Motos = findViewById(R.id.motos);
 
         Carros.setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, MarcasActivity.class);
@@ -56,8 +79,9 @@ public class MainActivity extends AppCompatActivity {
 
         });
         Motos.setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this, MarcaItem.class);
+            Intent intent = new Intent(MainActivity.this, MarcasActivity.class);
             intent.putExtra(MarcasActivity.value, "2");
+            startActivity(intent);
         });
 
         RevistasRemote revistasRemote = new RevistasRemote();

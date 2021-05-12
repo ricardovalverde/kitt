@@ -15,7 +15,10 @@ public interface KittAPI {
 
 
     @GET("marcas_carros/")
-    Call<List<MarcaItem>> findAllLogo();
+    Call<List<MarcaItem>> findAllLogoCar();
+
+    @GET("marcas_motos/")
+    Call<List<MarcaItem>> findAllLogoMoto();
 
     @GET("revistas/")
     Call<List<Noticias>> findAllRevistas();

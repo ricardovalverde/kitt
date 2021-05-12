@@ -10,8 +10,8 @@ import retrofit2.Response;
 
 public class LogoRemote {
 
-    public void findAllLogo(CallListLogoDataSource callback) {
-        HTTPClient.retrofit().create(KittAPI.class).findAllLogo().enqueue(new Callback<List<MarcaItem>>() {
+    public void findAllLogoCar(CallListLogoDataSource callback) {
+        HTTPClient.retrofit().create(KittAPI.class).findAllLogoCar().enqueue(new Callback<List<MarcaItem>>() {
             @Override
             public void onResponse(Call<List<MarcaItem>> call, Response<List<MarcaItem>> response) {
                 if (response.isSuccessful()) {
@@ -25,6 +25,27 @@ public class LogoRemote {
                 callback.onError(t.getMessage());
                 callback.onComplete();
             }
+        });
+
+
+    }
+    public void findAllLogoMoto(CallListLogoDataSource callback){
+        HTTPClient.retrofit().create(KittAPI.class).findAllLogoMoto().enqueue(new Callback<List<MarcaItem>>() {
+            @Override
+            public void onResponse(Call<List<MarcaItem>> call, Response<List<MarcaItem>> response) {
+                if(response.isSuccessful()){
+                    callback.onSuccess(response.body());
+
+                }
+                callback.onComplete();
+            }
+
+            @Override
+            public void onFailure(Call<List<MarcaItem>> call, Throwable t) {
+                    callback.onError(t.getMessage());
+                    callback.onComplete();
+            }
+
         });
 
 
