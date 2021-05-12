@@ -27,19 +27,14 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link CarFragmentActivity#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class CarFragmentActivity extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     ProgressBar progressBar;
-    private GroupAdapter adapter = new GroupAdapter();
-    // TODO: Rename and change types of parameters
+    private final GroupAdapter adapter = new GroupAdapter();
+
     private String mParam1;
     private String mParam2;
 
@@ -47,15 +42,6 @@ public class CarFragmentActivity extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment page1.
-     */
-    // TODO: Rename and change types and number of parameters
     public static CarFragmentActivity newInstance(String param1, String param2) {
         CarFragmentActivity fragment = new CarFragmentActivity();
         Bundle args = new Bundle();
@@ -77,72 +63,15 @@ public class CarFragmentActivity extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
         View viewMain = inflater.inflate(R.layout.fragment_car, container, false);
-        LinearLayout linearLayout = viewMain.findViewById(R.id.catalogoCar);
-        RevistasRemote revistasRemote = new RevistasRemote();
-        new RevistasPresenter(revistasRemote, this).requestAllRevistasCarros();
-        RecyclerView recyclerView = viewMain.findViewById(R.id.recyclerViewNoticiasCar);
-        LinearLayoutManager linearLayoutR = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
-        recyclerView.setLayoutManager(linearLayoutR);
-        recyclerView.setAdapter(adapter);
-        recyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
-            @Override
-            public boolean onInterceptTouchEvent(@NonNull @NotNull RecyclerView rv, @NonNull @NotNull MotionEvent e) {
-                if (e.getAction() == MotionEvent.ACTION_MOVE) {
-                    recyclerView.getParent().requestDisallowInterceptTouchEvent(true);
-
-                }
 
 
-                return false;
-            }
-
-            @Override
-            public void onTouchEvent(@NonNull @NotNull RecyclerView rv, @NonNull @NotNull MotionEvent e) {
-
-            }
-
-            @Override
-            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
-
-            }
-        });
-
-
-        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
-                ImageView imageView1 = viewMain.findViewById(R.id.arrowRigth);
-                int lastItemScroll = linearLayoutR.findLastCompletelyVisibleItemPosition();
-                int lastItemList = linearLayoutR.getItemCount();
-                if (lastItemScroll == (lastItemList - 1)) {
-
-                    imageView1.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.ic_baseline_keyboard_arrow_left_24, null));
-                } else {
-                    imageView1.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.ic_baseline_chevron_right_24, null));
-
-                }
-
-
-            }
-        });
-        adapter.setOnItemClickListener((item, view) -> {
-
-            Intent intent = new Intent(getActivity(), NoticiasActivity.class);
-            intent.putExtra(NoticiasActivity.URL, ((Noticias) item).getUrl());
-            startActivity(intent);
-
-
-        });
-
-
-        linearLayout.setOnClickListener(v -> {
-            Intent intent = new Intent(getActivity(), MarcasActivity.class);
-            intent.putExtra(MarcasActivity.value, "1");
-            startActivity(intent);
-        });
+        configurationRecyclerView(viewMain);
+        callRevistasRemote();
+        adapterClick();
+        catalogoClick(viewMain);
 
 
         return viewMain;
@@ -162,4 +91,91 @@ public class CarFragmentActivity extends Fragment {
         progressBar = getView().findViewById(R.id.progress_bar_carf);
         progressBar.setVisibility(View.GONE);
     }
+
+    private void configurationRecyclerView(View viewMain) {
+
+
+        LinearLayoutManager linearLayoutRecycler = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
+
+        RecyclerView recyclerView = viewMain.findViewById(R.id.recyclerViewNoticiasCar);
+        recyclerView.setLayoutManager(linearLayoutRecycler);
+        recyclerView.setAdapter(adapter);
+
+        recyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+
+            @Override
+            public boolean onInterceptTouchEvent(@NonNull @NotNull RecyclerView rv, @NonNull @NotNull MotionEvent e) {
+                if (e.getAction() == MotionEvent.ACTION_MOVE) {
+                    recyclerView.getParent().requestDisallowInterceptTouchEvent(true);
+                }
+                return false;
+            }
+
+            @Override
+            public void onTouchEvent(@NonNull @NotNull RecyclerView rv, @NonNull @NotNull MotionEvent e) {
+            }
+
+            @Override
+            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+            }
+        });
+
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+
+                ImageView imageView1 = viewMain.findViewById(R.id.arrowRigth);
+                int lastItemScroll = linearLayoutRecycler.findLastCompletelyVisibleItemPosition();
+                int lastItemList = linearLayoutRecycler.getItemCount();
+                if (lastItemScroll == (lastItemList - 1)) {
+
+                    imageView1.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.ic_baseline_keyboard_arrow_left_24, null));
+
+                } else {
+
+                    imageView1.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.ic_baseline_chevron_right_24, null));
+
+                }
+
+
+            }
+        });
+    }
+
+    private void callRevistasRemote() {
+
+        RevistasRemote revistasRemote = new RevistasRemote();
+        new RevistasPresenter(revistasRemote, this).requestAllRevistasCarros();
+
+
+    }
+
+    private void adapterClick() {
+
+        adapter.setOnItemClickListener((item, view) -> {
+
+            Intent intent = new Intent(getActivity(), NoticiasActivity.class);
+            intent.putExtra(NoticiasActivity.URL, ((Noticias) item).getUrl());
+            startActivity(intent);
+
+
+        });
+
+
+    }
+
+    private void catalogoClick(View viewMain) {
+
+        LinearLayout catalogoLayout = viewMain.findViewById(R.id.catalogoCar);
+        catalogoLayout.setOnClickListener(v -> {
+
+            Intent intent = new Intent(getActivity(), MarcasActivity.class);
+            intent.putExtra(MarcasActivity.value, "1");
+            startActivity(intent);
+
+        });
+
+
+    }
+
 }

@@ -12,13 +12,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Kitt">
+
         <activity
             android:name=".activity.MainActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity">
 
         </activity>
+
         <activity android:name=".activity.NoticiasActivity" />
+
         <activity android:name=".activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,17 +29,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".activity.DetalhesVeiculosActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
+
         <activity android:name=".activity.MarcasActivity" />
+
         <activity
             android:name=".activity.VeiculoActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity">
 
         </activity>
+
     </application>
 
 </manifest>

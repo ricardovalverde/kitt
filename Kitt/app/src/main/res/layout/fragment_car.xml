@@ -19,7 +19,7 @@
             android:layout_height="133dp"
             android:layout_gravity="center|top"
             android:layout_marginStart="9dp"
-            android:src="@drawable/generic" />
+            android:src="@drawable/genericcar" />
 
         <TextView
             android:layout_width="100dp"

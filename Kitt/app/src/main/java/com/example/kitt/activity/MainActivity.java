@@ -17,14 +17,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         TabLayout tabLayout = findViewById(R.id.tabs);
-        ViewPager2 viewPager2 = findViewById(R.id.viewpager);
+        ViewPager2 viewPager = findViewById(R.id.viewpager);
 
 
         ViewPagerAdapter adapter = new ViewPagerAdapter(this);
-        viewPager2.setAdapter(adapter);
+        viewPager.setAdapter(adapter);
 
-        new TabLayoutMediator(tabLayout, viewPager2, (tab, position) -> {
-            if ((position + 1) == 1) {
+        new TabLayoutMediator(tabLayout, viewPager, (tab, position) -> {
+            if (position == 0) {
                 tab.setText(R.string.carros);
             } else {
                 tab.setText(R.string.motos);
