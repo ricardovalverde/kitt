@@ -12,7 +12,7 @@ public class BrandRemote {
 
     public void findAllLogoCar(CallListLogoDataSource callback) {
 
-        HTTPClient.retrofit().create(KittAPI.class).findAllLogoCar().enqueue(new Callback<List<BrandItem>>() {
+        HTTPClient.retrofit().create(KittAPI.class).findAllBrandCar().enqueue(new Callback<List<BrandItem>>() {
             @Override
             public void onResponse(Call<List<BrandItem>> call, Response<List<BrandItem>> response) {
                 if (response.isSuccessful()) {
@@ -31,7 +31,7 @@ public class BrandRemote {
 
     public void findAllLogoMoto(CallListLogoDataSource callback) {
 
-        HTTPClient.retrofit().create(KittAPI.class).findAllLogoMoto().enqueue(new Callback<List<BrandItem>>() {
+        HTTPClient.retrofit().create(KittAPI.class).findAllBrandMoto().enqueue(new Callback<List<BrandItem>>() {
             @Override
             public void onResponse(Call<List<BrandItem>> call, Response<List<BrandItem>> response) {
                 if (response.isSuccessful()) {

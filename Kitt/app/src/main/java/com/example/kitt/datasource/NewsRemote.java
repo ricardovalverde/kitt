@@ -11,7 +11,7 @@ import retrofit2.Response;
 public class NewsRemote {
     public void findAllRevistasCarros(CallListRevistasDatasource revistasDatasource) {
 
-        HTTPClient.retrofit().create(KittAPI.class).findAllRevistasCarros().enqueue(new Callback<List<NewsItem>>() {
+        HTTPClient.retrofit().create(KittAPI.class).findAllNewsCar().enqueue(new Callback<List<NewsItem>>() {
             @Override
             public void onResponse(Call<List<NewsItem>> call, Response<List<NewsItem>> response) {
                 if (response.isSuccessful()) {
@@ -30,7 +30,7 @@ public class NewsRemote {
 
     public void findAllRevistasMotos(CallListRevistasDatasource revistasDatasource) {
 
-        HTTPClient.retrofit().create(KittAPI.class).findAllRevistasMoto().enqueue(new Callback<List<NewsItem>>() {
+        HTTPClient.retrofit().create(KittAPI.class).findAllNewsMoto().enqueue(new Callback<List<NewsItem>>() {
             @Override
             public void onResponse(Call<List<NewsItem>> call, Response<List<NewsItem>> response) {
                 if (response.isSuccessful()) {

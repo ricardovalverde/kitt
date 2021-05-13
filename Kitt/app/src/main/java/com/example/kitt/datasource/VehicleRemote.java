@@ -12,7 +12,7 @@ public class VehicleRemote {
     public void findAllVeiculos(CallListVeiculoDataRemote callback, String marca) {
 
         HTTPClient.retrofit().create(KittAPI.class)
-                .findAllVeiculos(marca)
+                .findAllVehicle(marca)
                 .enqueue(new Callback<List<VehicleItem>>() {
                     @Override
                     public void onResponse(Call<List<VehicleItem>> call, Response<List<VehicleItem>> response) {
