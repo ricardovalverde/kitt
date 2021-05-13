@@ -11,7 +11,8 @@ import com.squareup.picasso.Picasso;
 import com.xwray.groupie.Item;
 import com.xwray.groupie.ViewHolder;
 
-public class VeiculoItem extends Item<ViewHolder> {
+public class VehicleItem extends Item<ViewHolder> {
+
     @SerializedName("name")
     private final String name;
 
@@ -28,7 +29,7 @@ public class VeiculoItem extends Item<ViewHolder> {
     private final String ident;
 
 
-    public VeiculoItem(String name, String desc, String icon_url, String ano, String ident) {
+    public VehicleItem(String name, String desc, String icon_url, String ano, String ident) {
         this.name = name;
         this.desc = desc;
         this.icon_url = icon_url;
@@ -63,12 +64,10 @@ public class VeiculoItem extends Item<ViewHolder> {
         Picasso.get().load(icon_url).into(imageVeiculo);
         textName.setText(name);
         textYear.setText(ano);
-
-
     }
 
     @Override
     public int getLayout() {
-        return R.layout.veiculos_item;
+        return R.layout.vehicles_item;
     }
 }

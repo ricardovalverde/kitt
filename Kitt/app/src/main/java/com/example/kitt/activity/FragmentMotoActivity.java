@@ -18,9 +18,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.kitt.R;
-import com.example.kitt.datasource.RevistasRemote;
-import com.example.kitt.model.Noticias;
-import com.example.kitt.presentation.RevistasPresenter;
+import com.example.kitt.datasource.NewsRemote;
+import com.example.kitt.model.NewsItem;
+import com.example.kitt.presentation.NewsPresenter;
 import com.xwray.groupie.GroupAdapter;
 
 import org.jetbrains.annotations.NotNull;
@@ -28,22 +28,21 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 
-public class CarFragmentActivity extends Fragment {
+public class FragmentMotoActivity extends Fragment {
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     ProgressBar progressBar;
-    private final GroupAdapter adapter = new GroupAdapter();
-
     private String mParam1;
     private String mParam2;
+    private GroupAdapter adapter = new GroupAdapter();
 
-    public CarFragmentActivity() {
+    public FragmentMotoActivity() {
         // Required empty public constructor
     }
 
-    public static CarFragmentActivity newInstance(String param1, String param2) {
-        CarFragmentActivity fragment = new CarFragmentActivity();
+    public static FragmentMotoActivity newInstance(String param1, String param2) {
+        FragmentMotoActivity fragment = new FragmentMotoActivity();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -52,32 +51,19 @@ public class CarFragmentActivity extends Fragment {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-
-
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View viewMain = inflater.inflate(R.layout.fragment_car, container, false);
-
+        View viewMain = inflater.inflate(R.layout.fragment_motos, container, false);
 
         configurationRecyclerView(viewMain);
         callRevistasRemote();
-        adapterClick();
         catalogoClick(viewMain);
-
+        adapterClick();
 
         return viewMain;
     }
 
-    public void showRevistas(List<Noticias> list) {
+    public void showRevistas(List<NewsItem> list) {
 
         adapter.addAll(list);
         adapter.notifyDataSetChanged();
@@ -88,24 +74,23 @@ public class CarFragmentActivity extends Fragment {
     }
 
     public void hideProgressBar() {
-        progressBar = getView().findViewById(R.id.progress_bar_carf);
+        progressBar = getView().findViewById(R.id.progress_bar_motof);
         progressBar.setVisibility(View.GONE);
     }
 
     private void configurationRecyclerView(View viewMain) {
 
+        LinearLayoutManager linearLayoutRecyclerView = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
 
-        LinearLayoutManager linearLayoutRecycler = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
-
-        RecyclerView recyclerView = viewMain.findViewById(R.id.recyclerViewNoticiasCar);
-        recyclerView.setLayoutManager(linearLayoutRecycler);
+        RecyclerView recyclerView = viewMain.findViewById(R.id.recyclerViewNoticiasMoto);
+        recyclerView.setLayoutManager(linearLayoutRecyclerView);
         recyclerView.setAdapter(adapter);
 
         recyclerView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
-
             @Override
             public boolean onInterceptTouchEvent(@NonNull @NotNull RecyclerView rv, @NonNull @NotNull MotionEvent e) {
                 if (e.getAction() == MotionEvent.ACTION_MOVE) {
+
                     recyclerView.getParent().requestDisallowInterceptTouchEvent(true);
                 }
                 return false;
@@ -125,8 +110,8 @@ public class CarFragmentActivity extends Fragment {
             public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
 
                 ImageView imageView1 = viewMain.findViewById(R.id.arrowRigth);
-                int lastItemScroll = linearLayoutRecycler.findLastCompletelyVisibleItemPosition();
-                int lastItemList = linearLayoutRecycler.getItemCount();
+                int lastItemScroll = linearLayoutRecyclerView.findLastCompletelyVisibleItemPosition();
+                int lastItemList = linearLayoutRecyclerView.getItemCount();
                 if (lastItemScroll == (lastItemList - 1)) {
 
                     imageView1.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.ic_baseline_keyboard_arrow_left_24, null));
@@ -134,48 +119,42 @@ public class CarFragmentActivity extends Fragment {
                 } else {
 
                     imageView1.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.ic_baseline_chevron_right_24, null));
-
                 }
-
 
             }
         });
+
+
     }
 
     private void callRevistasRemote() {
-
-        RevistasRemote revistasRemote = new RevistasRemote();
-        new RevistasPresenter(revistasRemote, this).requestAllRevistasCarros();
-
-
-    }
-
-    private void adapterClick() {
-
-        adapter.setOnItemClickListener((item, view) -> {
-
-            Intent intent = new Intent(getActivity(), NoticiasActivity.class);
-            intent.putExtra(NoticiasActivity.URL, ((Noticias) item).getUrl());
-            startActivity(intent);
-
-
-        });
-
-
+        NewsRemote revistasRemote = new NewsRemote();
+        new NewsPresenter(revistasRemote, this).requestAllRevistasMotos();
     }
 
     private void catalogoClick(View viewMain) {
 
-        LinearLayout catalogoLayout = viewMain.findViewById(R.id.catalogoCar);
-        catalogoLayout.setOnClickListener(v -> {
-
-            Intent intent = new Intent(getActivity(), MarcasActivity.class);
-            intent.putExtra(MarcasActivity.value, "1");
+        LinearLayout linearLayout = viewMain.findViewById(R.id.catalogoMoto);
+        linearLayout.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), BrandsActivity.class);
+            intent.putExtra(BrandsActivity.value, "2");
             startActivity(intent);
+        });
+
+    }
+
+    private void adapterClick() {
+        adapter.setOnItemClickListener((item, view) -> {
+
+            Intent intent = new Intent(getActivity(), NewsActivity.class);
+            intent.putExtra(NewsActivity.URL, ((NewsItem) item).getUrl());
+            startActivity(intent);
+
 
         });
 
 
     }
+
 
 }

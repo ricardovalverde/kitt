@@ -1,6 +1,6 @@
 package com.example.kitt.datasource;
 
-import com.example.kitt.model.MarcaItem;
+import com.example.kitt.model.BrandItem;
 
 import java.util.List;
 
@@ -8,12 +8,13 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class LogoRemote {
+public class BrandRemote {
 
     public void findAllLogoCar(CallListLogoDataSource callback) {
-        HTTPClient.retrofit().create(KittAPI.class).findAllLogoCar().enqueue(new Callback<List<MarcaItem>>() {
+
+        HTTPClient.retrofit().create(KittAPI.class).findAllLogoCar().enqueue(new Callback<List<BrandItem>>() {
             @Override
-            public void onResponse(Call<List<MarcaItem>> call, Response<List<MarcaItem>> response) {
+            public void onResponse(Call<List<BrandItem>> call, Response<List<BrandItem>> response) {
                 if (response.isSuccessful()) {
                     callback.onSuccess(response.body());
                 }
@@ -21,19 +22,18 @@ public class LogoRemote {
             }
 
             @Override
-            public void onFailure(Call<List<MarcaItem>> call, Throwable t) {
+            public void onFailure(Call<List<BrandItem>> call, Throwable t) {
                 callback.onError(t.getMessage());
                 callback.onComplete();
             }
         });
-
-
     }
 
     public void findAllLogoMoto(CallListLogoDataSource callback) {
-        HTTPClient.retrofit().create(KittAPI.class).findAllLogoMoto().enqueue(new Callback<List<MarcaItem>>() {
+
+        HTTPClient.retrofit().create(KittAPI.class).findAllLogoMoto().enqueue(new Callback<List<BrandItem>>() {
             @Override
-            public void onResponse(Call<List<MarcaItem>> call, Response<List<MarcaItem>> response) {
+            public void onResponse(Call<List<BrandItem>> call, Response<List<BrandItem>> response) {
                 if (response.isSuccessful()) {
                     callback.onSuccess(response.body());
 
@@ -42,24 +42,21 @@ public class LogoRemote {
             }
 
             @Override
-            public void onFailure(Call<List<MarcaItem>> call, Throwable t) {
+            public void onFailure(Call<List<BrandItem>> call, Throwable t) {
                 callback.onError(t.getMessage());
                 callback.onComplete();
             }
 
         });
-
-
     }
 
 
     public interface CallListLogoDataSource {
-        void onSuccess(List<MarcaItem> item);
+
+        void onSuccess(List<BrandItem> item);
 
         void onError(String errorMessage);
 
         void onComplete();
     }
-
-
 }

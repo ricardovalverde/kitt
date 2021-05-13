@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.CarFragmentActivity">
+    tools:context=".activity.FragmentCarActivity">
 
 
     <LinearLayout
@@ -19,7 +19,7 @@
             android:layout_height="133dp"
             android:layout_gravity="center|top"
             android:layout_marginStart="9dp"
-            android:src="@drawable/genericcar" />
+            android:src="@drawable/generic_car" />
 
         <TextView
             android:layout_width="100dp"
@@ -64,10 +64,10 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewNoticiasCar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
 
         <include
-            layout="@layout/noticias_item"
+            layout="@layout/news_item"
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="94dp" />
 
@@ -82,9 +82,6 @@
             app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
 
 
 </FrameLayout>

@@ -1,8 +1,8 @@
 package com.example.kitt.datasource;
 
-import com.example.kitt.model.MarcaItem;
-import com.example.kitt.model.Noticias;
-import com.example.kitt.model.VeiculoItem;
+import com.example.kitt.model.BrandItem;
+import com.example.kitt.model.NewsItem;
+import com.example.kitt.model.VehicleItem;
 
 import java.util.List;
 
@@ -15,20 +15,20 @@ public interface KittAPI {
 
 
     @GET("marcas_carros/")
-    Call<List<MarcaItem>> findAllLogoCar();
+    Call<List<BrandItem>> findAllLogoCar();
 
     @GET("marcas_motos/")
-    Call<List<MarcaItem>> findAllLogoMoto();
+    Call<List<BrandItem>> findAllLogoMoto();
 
     @GET("revistas/")
-    Call<List<Noticias>> findAllRevistasCarros();
+    Call<List<NewsItem>> findAllRevistasCarros();
 
     @GET("revistas_moto/")
-    Call<List<Noticias>> findAllRevistasMoto();
+    Call<List<NewsItem>> findAllRevistasMoto();
 
 
     @GET("{marca}")
-    Call<List<VeiculoItem>> findAllVeiculos(@Path("marca") String marca);
+    Call<List<VehicleItem>> findAllVeiculos(@Path("marca") String marca);
 
     @GET("{id}")
     Call<List<String>> findDetailsVehicles(@Path("id") String id);

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.MotoFragmentActivity">
+    tools:context=".activity.FragmentMotoActivity">
 
 
     <LinearLayout
@@ -19,7 +19,7 @@
             android:layout_height="133dp"
             android:layout_gravity="center|top"
             android:layout_marginStart="9dp"
-            android:src="@drawable/genericmoto" />
+            android:src="@drawable/generic_moto" />
 
         <TextView
             android:layout_width="100dp"
@@ -27,8 +27,8 @@
             android:layout_gravity="bottom"
             android:layout_marginStart="-90dp"
             android:layout_marginTop="25dp"
-            android:text="@string/catalogo"
             android:fontFamily="@font/robotolight"
+            android:text="@string/catalogo"
             android:textSize="15sp" />
 
     </LinearLayout>
@@ -65,10 +65,10 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewNoticiasMoto"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
 
         <include
-            layout="@layout/noticias_item"
+            layout="@layout/news_item"
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="94dp" />
 
@@ -82,9 +82,6 @@
             app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
 
 
 </FrameLayout>

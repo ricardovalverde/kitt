@@ -6,8 +6,9 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class DetalhesRemote {
+public class DetailsRemote {
     public void findDetailsVehicles(CallVeiculosDetalhes callback, String id) {
+
         HTTPClient.retrofit().create(KittAPI.class)
                 .findDetailsVehicles(id)
                 .enqueue(new Callback<List<String>>() {
@@ -25,8 +26,6 @@ public class DetalhesRemote {
                         callback.onComplete();
                     }
                 });
-
-
     }
 
 

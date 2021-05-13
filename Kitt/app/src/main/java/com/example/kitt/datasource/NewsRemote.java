@@ -1,6 +1,6 @@
 package com.example.kitt.datasource;
 
-import com.example.kitt.model.Noticias;
+import com.example.kitt.model.NewsItem;
 
 import java.util.List;
 
@@ -8,11 +8,12 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class RevistasRemote {
+public class NewsRemote {
     public void findAllRevistasCarros(CallListRevistasDatasource revistasDatasource) {
-        HTTPClient.retrofit().create(KittAPI.class).findAllRevistasCarros().enqueue(new Callback<List<Noticias>>() {
+
+        HTTPClient.retrofit().create(KittAPI.class).findAllRevistasCarros().enqueue(new Callback<List<NewsItem>>() {
             @Override
-            public void onResponse(Call<List<Noticias>> call, Response<List<Noticias>> response) {
+            public void onResponse(Call<List<NewsItem>> call, Response<List<NewsItem>> response) {
                 if (response.isSuccessful()) {
                     revistasDatasource.onSuccesCar(response.body());
                 }
@@ -20,7 +21,7 @@ public class RevistasRemote {
             }
 
             @Override
-            public void onFailure(Call<List<Noticias>> call, Throwable t) {
+            public void onFailure(Call<List<NewsItem>> call, Throwable t) {
                 revistasDatasource.onErrorCar(t.getMessage());
                 revistasDatasource.onCompleteCar();
             }
@@ -28,9 +29,10 @@ public class RevistasRemote {
     }
 
     public void findAllRevistasMotos(CallListRevistasDatasource revistasDatasource) {
-        HTTPClient.retrofit().create(KittAPI.class).findAllRevistasMoto().enqueue(new Callback<List<Noticias>>() {
+
+        HTTPClient.retrofit().create(KittAPI.class).findAllRevistasMoto().enqueue(new Callback<List<NewsItem>>() {
             @Override
-            public void onResponse(Call<List<Noticias>> call, Response<List<Noticias>> response) {
+            public void onResponse(Call<List<NewsItem>> call, Response<List<NewsItem>> response) {
                 if (response.isSuccessful()) {
                     revistasDatasource.onSuccesMoto(response.body());
                 }
@@ -38,7 +40,7 @@ public class RevistasRemote {
             }
 
             @Override
-            public void onFailure(Call<List<Noticias>> call, Throwable t) {
+            public void onFailure(Call<List<NewsItem>> call, Throwable t) {
                 revistasDatasource.onErrorMoto(t.getMessage());
                 revistasDatasource.onCompleteMoto();
             }
@@ -47,9 +49,9 @@ public class RevistasRemote {
 
 
     public interface CallListRevistasDatasource {
-        void onSuccesCar(List<Noticias> response);
+        void onSuccesCar(List<NewsItem> response);
 
-        void onSuccesMoto(List<Noticias> response);
+        void onSuccesMoto(List<NewsItem> response);
 
         void onErrorCar(String errorMessage);
 
@@ -58,7 +60,6 @@ public class RevistasRemote {
         void onCompleteCar();
 
         void onCompleteMoto();
-
 
     }
 }

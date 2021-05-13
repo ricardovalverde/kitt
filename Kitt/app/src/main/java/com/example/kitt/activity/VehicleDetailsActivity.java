@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,45 +13,32 @@ import com.denzcoskun.imageslider.ImageSlider;
 import com.denzcoskun.imageslider.constants.ScaleTypes;
 import com.denzcoskun.imageslider.models.SlideModel;
 import com.example.kitt.R;
-import com.example.kitt.datasource.DetalhesRemote;
-import com.example.kitt.presentation.DetalhesPresenter;
+import com.example.kitt.datasource.DetailsRemote;
+import com.example.kitt.presentation.DetailsPresenter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class DetalhesVeiculosActivity extends AppCompatActivity {
+public class VehicleDetailsActivity extends AppCompatActivity {
+
     static final String DESCRICAO = "descricao";
     static final String ID = "1";
     static final String NAME = "name";
     static final String ANO = "ano";
-    ImageView arrowBack;
+
     private ProgressBar progressBar;
     private String descricao;
     private String name;
     private String ano;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_veiculos_detalhes);
-        arrowBack = findViewById(R.id.arrowBackDetails);
+        setContentView(R.layout.activity_details);
 
-
-        if (getIntent().getExtras() != null) {
-            descricao = getIntent().getExtras().getString(DESCRICAO);
-            String id = getIntent().getExtras().getString(ID);
-            name = getIntent().getExtras().getString(NAME);
-            ano = getIntent().getExtras().getString(ANO);
-
-
-            DetalhesRemote detalhesRemote = new DetalhesRemote();
-            new DetalhesPresenter(detalhesRemote, this).requestDetails(id);
-
-        }
-        arrowBack.setOnClickListener(v -> {
-            finish();
-        });
-
+        callDetailsRemote();
+        arrowBackClick();
 
     }
 
@@ -70,10 +58,37 @@ public class DetalhesVeiculosActivity extends AppCompatActivity {
 
     }
 
+    public void showError(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
     public void hideProgressBar() {
         progressBar = findViewById(R.id.progressBarDetalhes);
         progressBar.setVisibility(View.GONE);
     }
 
+    private void arrowBackClick() {
+        ImageView arrowBack = findViewById(R.id.arrowBackDetails);
+        arrowBack.setOnClickListener(v -> {
+            finish();
+        });
 
+
+    }
+
+    private void callDetailsRemote() {
+
+        if (getIntent().getExtras() != null) {
+            descricao = getIntent().getExtras().getString(DESCRICAO);
+            String id = getIntent().getExtras().getString(ID);
+            name = getIntent().getExtras().getString(NAME);
+            ano = getIntent().getExtras().getString(ANO);
+
+
+            DetailsRemote detalhesRemote = new DetailsRemote();
+            new DetailsPresenter(detalhesRemote, this).requestDetails(id);
+
+        }
+
+    }
 }

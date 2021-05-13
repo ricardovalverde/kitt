@@ -20,7 +20,7 @@
 
         </activity>
 
-        <activity android:name=".activity.NoticiasActivity" />
+        <activity android:name=".activity.NewsActivity" />
 
         <activity android:name=".activity.SplashActivity">
             <intent-filter>
@@ -31,14 +31,14 @@
         </activity>
 
         <activity
-            android:name=".activity.DetalhesVeiculosActivity"
+            android:name=".activity.VehicleDetailsActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
 
-        <activity android:name=".activity.MarcasActivity" />
+        <activity android:name=".activity.BrandsActivity" />
 
         <activity
-            android:name=".activity.VeiculoActivity"
+            android:name=".activity.VehicleActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity">
 

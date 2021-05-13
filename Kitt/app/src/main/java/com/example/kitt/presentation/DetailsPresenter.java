@@ -1,16 +1,16 @@
 package com.example.kitt.presentation;
 
-import com.example.kitt.activity.DetalhesVeiculosActivity;
-import com.example.kitt.datasource.DetalhesRemote;
+import com.example.kitt.activity.VehicleDetailsActivity;
+import com.example.kitt.datasource.DetailsRemote;
 
 import java.util.List;
 
-public class DetalhesPresenter implements DetalhesRemote.CallVeiculosDetalhes {
+public class DetailsPresenter implements DetailsRemote.CallVeiculosDetalhes {
 
-    private final DetalhesRemote call;
-    private final DetalhesVeiculosActivity view;
+    private final DetailsRemote call;
+    private final VehicleDetailsActivity view;
 
-    public DetalhesPresenter(DetalhesRemote call, DetalhesVeiculosActivity view) {
+    public DetailsPresenter(DetailsRemote call, VehicleDetailsActivity view) {
         this.call = call;
         this.view = view;
     }
@@ -26,7 +26,7 @@ public class DetalhesPresenter implements DetalhesRemote.CallVeiculosDetalhes {
 
     @Override
     public void onError(String errorMessage) {
-
+        view.showError(errorMessage);
     }
 
     @Override
