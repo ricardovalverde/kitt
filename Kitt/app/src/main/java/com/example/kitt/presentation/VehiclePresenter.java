@@ -8,16 +8,16 @@ import java.util.List;
 
 public class VehiclePresenter implements VehicleRemote.CallListVeiculoDataRemote {
 
-    private final VehicleRemote veiculoRemote;
+    private final VehicleRemote vehicleRemote;
     private final VehicleActivity view;
 
-    public VehiclePresenter(VehicleRemote veiculoRemote, VehicleActivity view) {
-        this.veiculoRemote = veiculoRemote;
+    public VehiclePresenter(VehicleRemote vehicleRemote, VehicleActivity view) {
+        this.vehicleRemote = vehicleRemote;
         this.view = view;
     }
 
     public void requestVeiculos(String marca) {
-        this.veiculoRemote.findAllVeiculos(this, marca);
+        this.vehicleRemote.findAllVehicles(this, marca);
     }
 
 

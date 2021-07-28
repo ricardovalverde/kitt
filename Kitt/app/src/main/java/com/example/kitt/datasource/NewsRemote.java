@@ -9,40 +9,40 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class NewsRemote {
-    public void findAllRevistasCarros(CallListRevistasDatasource revistasDatasource) {
+    public void findAllCarMagazines(CallListRevistasDatasource magazinesDataSource) {
 
         HTTPClient.retrofit().create(KittAPI.class).findAllNewsCar().enqueue(new Callback<List<NewsItem>>() {
             @Override
             public void onResponse(Call<List<NewsItem>> call, Response<List<NewsItem>> response) {
                 if (response.isSuccessful()) {
-                    revistasDatasource.onSuccesCar(response.body());
+                    magazinesDataSource.onSuccesCar(response.body());
                 }
-                revistasDatasource.onCompleteCar();
+                magazinesDataSource.onCompleteCar();
             }
 
             @Override
             public void onFailure(Call<List<NewsItem>> call, Throwable t) {
-                revistasDatasource.onErrorCar(t.getMessage());
-                revistasDatasource.onCompleteCar();
+                magazinesDataSource.onErrorCar(t.getMessage());
+                magazinesDataSource.onCompleteCar();
             }
         });
     }
 
-    public void findAllRevistasMotos(CallListRevistasDatasource revistasDatasource) {
+    public void findAllMotorcycleMagazines(CallListRevistasDatasource magazinesDataSource) {
 
         HTTPClient.retrofit().create(KittAPI.class).findAllNewsMoto().enqueue(new Callback<List<NewsItem>>() {
             @Override
             public void onResponse(Call<List<NewsItem>> call, Response<List<NewsItem>> response) {
                 if (response.isSuccessful()) {
-                    revistasDatasource.onSuccesMoto(response.body());
+                    magazinesDataSource.onSuccesMoto(response.body());
                 }
-                revistasDatasource.onCompleteMoto();
+                magazinesDataSource.onCompleteMoto();
             }
 
             @Override
             public void onFailure(Call<List<NewsItem>> call, Throwable t) {
-                revistasDatasource.onErrorMoto(t.getMessage());
-                revistasDatasource.onCompleteMoto();
+                magazinesDataSource.onErrorMoto(t.getMessage());
+                magazinesDataSource.onCompleteMoto();
             }
         });
     }

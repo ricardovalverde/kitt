@@ -21,15 +21,15 @@ import java.util.List;
 
 public class VehicleDetailsActivity extends AppCompatActivity {
 
-    static final String DESCRICAO = "descricao";
+    static final String DESCRIPTION = "descricao";
     static final String ID = "1";
     static final String NAME = "name";
-    static final String ANO = "ano";
+    static final String YEAR = "ano";
 
     private ProgressBar progressBar;
     private String descricao;
     private String name;
-    private String ano;
+    private String year;
 
 
     @Override
@@ -39,23 +39,22 @@ public class VehicleDetailsActivity extends AppCompatActivity {
 
         callDetailsRemote();
         arrowBackClick();
-
     }
 
     public void showDetails(List<String> list) {
         ImageSlider imageSlider = findViewById(R.id.slider);
+
         List<SlideModel> slideModels = new ArrayList<>();
         for (String item : list) {
-            slideModels.add(new SlideModel(item, (name + " " + ano), ScaleTypes.CENTER_CROP));
-
+            slideModels.add(new SlideModel(item, (name + " " + year), ScaleTypes.CENTER_CROP));
         }
+
         imageSlider.setImageList(slideModels, null);
+
         if (getIntent().getExtras() != null) {
             TextView textDescricao = findViewById(R.id.txt_desc_veiculo);
             textDescricao.setText(descricao);
         }
-
-
     }
 
     public void showError(String message) {
@@ -73,22 +72,19 @@ public class VehicleDetailsActivity extends AppCompatActivity {
             finish();
         });
 
-
     }
 
     private void callDetailsRemote() {
 
         if (getIntent().getExtras() != null) {
-            descricao = getIntent().getExtras().getString(DESCRICAO);
+            descricao = getIntent().getExtras().getString(DESCRIPTION);
             String id = getIntent().getExtras().getString(ID);
             name = getIntent().getExtras().getString(NAME);
-            ano = getIntent().getExtras().getString(ANO);
+            year = getIntent().getExtras().getString(YEAR);
 
-
-            DetailsRemote detalhesRemote = new DetailsRemote();
-            new DetailsPresenter(detalhesRemote, this).requestDetails(id);
+            DetailsRemote detailsRemote = new DetailsRemote();
+            new DetailsPresenter(detailsRemote, this).requestDetails(id);
 
         }
-
     }
 }

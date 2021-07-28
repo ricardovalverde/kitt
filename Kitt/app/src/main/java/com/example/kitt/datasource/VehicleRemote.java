@@ -9,7 +9,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class VehicleRemote {
-    public void findAllVeiculos(CallListVeiculoDataRemote callback, String marca) {
+    public void findAllVehicles(CallListVeiculoDataRemote callback, String marca) {
 
         HTTPClient.retrofit().create(KittAPI.class)
                 .findAllVehicle(marca)
@@ -28,10 +28,7 @@ public class VehicleRemote {
                         callback.onComplete();
 
                     }
-
                 });
-
-
     }
 
     public interface CallListVeiculoDataRemote {

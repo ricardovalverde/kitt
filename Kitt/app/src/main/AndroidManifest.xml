@@ -11,14 +11,12 @@
         android:label="@string/app_name"
         android:roundIcon="@drawable/caricon"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Kitt">
+        android:theme="@style/ThemeApp">
 
         <activity
             android:name=".activity.MainActivity"
             android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity">
-
-        </activity>
+            tools:ignore="LockedOrientationActivity"></activity>
 
         <activity android:name=".activity.NewsActivity" />
 

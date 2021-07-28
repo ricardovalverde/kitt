@@ -8,7 +8,6 @@ import java.util.List;
 
 public class BrandPresenter implements BrandRemote.CallListLogoDataSource {
 
-
     private final BrandRemote logoRemote;
     private final BrandsActivity view;
 

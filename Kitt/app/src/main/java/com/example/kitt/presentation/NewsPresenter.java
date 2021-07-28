@@ -26,11 +26,11 @@ public class NewsPresenter implements NewsRemote.CallListRevistasDatasource {
 
 
     public void requestAllRevistasCarros() {
-        this.revistasRemote.findAllRevistasCarros(this);
+        this.revistasRemote.findAllCarMagazines(this);
     }
 
     public void requestAllRevistasMotos() {
-        this.revistasRemote.findAllRevistasMotos(this);
+        this.revistasRemote.findAllMotorcycleMagazines(this);
     }
 
 

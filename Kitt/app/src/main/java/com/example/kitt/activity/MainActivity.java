@@ -30,9 +30,7 @@ public class MainActivity extends AppCompatActivity {
                 tab.setText(R.string.motos);
             }
         }).attach();
-
     }
-
 }
 
 

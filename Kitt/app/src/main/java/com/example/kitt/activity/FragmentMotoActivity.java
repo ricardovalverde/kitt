@@ -32,10 +32,11 @@ public class FragmentMotoActivity extends Fragment {
 
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-    ProgressBar progressBar;
+    private GroupAdapter adapter = new GroupAdapter();
+
+    private ProgressBar progressBar;
     private String mParam1;
     private String mParam2;
-    private GroupAdapter adapter = new GroupAdapter();
 
     public FragmentMotoActivity() {
         // Required empty public constructor
@@ -64,7 +65,6 @@ public class FragmentMotoActivity extends Fragment {
     }
 
     public void showRevistas(List<NewsItem> list) {
-
         adapter.addAll(list);
         adapter.notifyDataSetChanged();
     }
@@ -123,8 +123,6 @@ public class FragmentMotoActivity extends Fragment {
 
             }
         });
-
-
     }
 
     private void callRevistasRemote() {
@@ -140,7 +138,6 @@ public class FragmentMotoActivity extends Fragment {
             intent.putExtra(BrandsActivity.value, "2");
             startActivity(intent);
         });
-
     }
 
     private void adapterClick() {
@@ -149,12 +146,6 @@ public class FragmentMotoActivity extends Fragment {
             Intent intent = new Intent(getActivity(), NewsActivity.class);
             intent.putExtra(NewsActivity.URL, ((NewsItem) item).getUrl());
             startActivity(intent);
-
-
         });
-
-
     }
-
-
 }

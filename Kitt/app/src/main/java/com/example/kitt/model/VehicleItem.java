@@ -49,7 +49,6 @@ public class VehicleItem extends Item<ViewHolder> {
         return ano;
     }
 
-
     public String getDesc() {
         return desc;
     }

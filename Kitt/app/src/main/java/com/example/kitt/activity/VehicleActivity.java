@@ -23,7 +23,7 @@ import java.util.List;
 
 public class VehicleActivity extends AppCompatActivity {
 
-    static final String MARCA = "marca";
+    static final String BRAND = "marca";
     private final GroupAdapter adapter = new GroupAdapter();
 
 
@@ -42,18 +42,16 @@ public class VehicleActivity extends AppCompatActivity {
     public void showVeiculos(List<VehicleItem> veiculoItem) {
         TextView textView = findViewById(R.id.marca_vehicle);
 
-        String marca = getIntent().getExtras().getString(MARCA);
-        if (!marca.equals("bmw")) {
-            String cap = marca.substring(0, 1).toUpperCase() + marca.substring(1);
+        String brand = getIntent().getExtras().getString(BRAND);
+        if (!brand.equals("bmw")) {
+            String cap = brand.substring(0, 1).toUpperCase() + brand.substring(1);
             textView.setText(cap);
         } else {
-            textView.setText(marca.toUpperCase());
+            textView.setText(brand.toUpperCase());
         }
 
         adapter.addAll(veiculoItem);
         adapter.notifyDataSetChanged();
-
-
     }
 
     public void showError(String message) {
@@ -63,8 +61,6 @@ public class VehicleActivity extends AppCompatActivity {
     public void hideProgressBar() {
         ProgressBar progressBar = findViewById(R.id.progressBarVeiculos);
         progressBar.setVisibility(View.GONE);
-
-
     }
 
     private void arrowBackClick() {
@@ -79,7 +75,6 @@ public class VehicleActivity extends AppCompatActivity {
         RecyclerView recyclerView = findViewById(R.id.recyclerViewVeiculos);
         Configuration configuration = getResources().getConfiguration();
 
-
         if (configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
             recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         } else {
@@ -87,44 +82,35 @@ public class VehicleActivity extends AppCompatActivity {
         }
 
         recyclerView.setAdapter(adapter);
-
     }
 
     private void callVeiculoRemote() {
 
         if (getIntent().getExtras() != null) {
 
-            String marca = getIntent().getExtras().getString(MARCA);
-            VehicleRemote veiculoRemote = new VehicleRemote();
-            VehiclePresenter veiculoPresenter = new VehiclePresenter(veiculoRemote, this);
-            veiculoPresenter.requestVeiculos(marca);
-
+            String brand = getIntent().getExtras().getString(BRAND);
+            VehicleRemote vehicleRemote = new VehicleRemote();
+            VehiclePresenter vehiclePresenter = new VehiclePresenter(vehicleRemote, this);
+            vehiclePresenter.requestVeiculos(brand);
         }
-
-
     }
 
     private void adapaterClick() {
         adapter.setOnItemClickListener((item, view) -> {
 
             Intent intent = new Intent(VehicleActivity.this, VehicleDetailsActivity.class);
+
             String desc = ((VehicleItem) item).getDesc();
             String id = ((VehicleItem) item).getIdent();
             String name = ((VehicleItem) item).getName();
-            String ano = ((VehicleItem) item).getAno();
+            String year = ((VehicleItem) item).getAno();
 
-
-            intent.putExtra(VehicleDetailsActivity.DESCRICAO, desc);
+            intent.putExtra(VehicleDetailsActivity.DESCRIPTION, desc);
             intent.putExtra(VehicleDetailsActivity.ID, id);
             intent.putExtra(VehicleDetailsActivity.NAME, name);
-            intent.putExtra(VehicleDetailsActivity.ANO, ano);
+            intent.putExtra(VehicleDetailsActivity.YEAR, year);
+
             startActivity(intent);
-
-
         });
-
-
     }
-
-
 }

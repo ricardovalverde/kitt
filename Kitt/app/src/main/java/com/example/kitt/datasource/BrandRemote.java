@@ -36,7 +36,6 @@ public class BrandRemote {
             public void onResponse(Call<List<BrandItem>> call, Response<List<BrandItem>> response) {
                 if (response.isSuccessful()) {
                     callback.onSuccess(response.body());
-
                 }
                 callback.onComplete();
             }
@@ -46,10 +45,8 @@ public class BrandRemote {
                 callback.onError(t.getMessage());
                 callback.onComplete();
             }
-
         });
     }
-
 
     public interface CallListLogoDataSource {
 

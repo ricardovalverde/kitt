@@ -23,7 +23,7 @@ import java.util.List;
 public class BrandsActivity extends AppCompatActivity {
 
     public static String value = null;
-    public static String marca = null;
+    public static String brand = null;
     private final GroupAdapter adapter = new GroupAdapter();
 
 
@@ -40,25 +40,17 @@ public class BrandsActivity extends AppCompatActivity {
 
 
     public void showMarcas(List<BrandItem> marcaItems) {
-
-
         adapter.addAll(marcaItems);
         adapter.notifyDataSetChanged();
-
-
     }
 
     public void showError(String message) {
         Toast.makeText(this, message, Toast.LENGTH_LONG).show();
-
-
     }
 
     public void hideProgressBar() {
         ProgressBar progressBar = findViewById(R.id.progressBarMarcas);
         progressBar.setVisibility(View.GONE);
-
-
     }
 
     private void arrowBackClick() {
@@ -66,8 +58,6 @@ public class BrandsActivity extends AppCompatActivity {
         arrowBack.setOnClickListener(v -> {
             finish();
         });
-
-
     }
 
     private void configurationRecyclerView() {
@@ -86,16 +76,13 @@ public class BrandsActivity extends AppCompatActivity {
         adapter.setOnItemClickListener((item, view) -> {
 
             Intent intent = new Intent(BrandsActivity.this, VehicleActivity.class);
-            marca = ((BrandItem) item).getNames();
-            intent.putExtra(VehicleActivity.MARCA, marca);
+            brand = ((BrandItem) item).getNames();
+            intent.putExtra(VehicleActivity.BRAND, brand);
             startActivity(intent);
-
-
         });
     }
 
     private void callBrandRemote() {
-
         BrandRemote logoRemote = new BrandRemote();
 
         if (getIntent().getExtras() != null) {
@@ -108,6 +95,5 @@ public class BrandsActivity extends AppCompatActivity {
             }
         }
     }
-
 }
 

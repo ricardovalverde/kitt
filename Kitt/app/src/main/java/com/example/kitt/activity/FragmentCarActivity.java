@@ -33,7 +33,8 @@ public class FragmentCarActivity extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
     private final GroupAdapter adapter = new GroupAdapter();
-    ProgressBar progressBar;
+
+    private ProgressBar progressBar;
     private String mParam1;
     private String mParam2;
 
@@ -53,12 +54,11 @@ public class FragmentCarActivity extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
-
     }
 
     @Override
@@ -66,18 +66,15 @@ public class FragmentCarActivity extends Fragment {
 
         View viewMain = inflater.inflate(R.layout.fragment_car, container, false);
 
-
         configurationRecyclerView(viewMain);
         callRevistasRemote();
         adapterClick();
         catalogoClick(viewMain);
 
-
         return viewMain;
     }
 
     public void showRevistas(List<NewsItem> list) {
-
         adapter.addAll(list);
         adapter.notifyDataSetChanged();
     }
@@ -92,7 +89,6 @@ public class FragmentCarActivity extends Fragment {
     }
 
     private void configurationRecyclerView(View viewMain) {
-
 
         LinearLayoutManager linearLayoutRecycler = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
 
@@ -135,8 +131,6 @@ public class FragmentCarActivity extends Fragment {
                     imageView1.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.ic_baseline_chevron_right_24, null));
 
                 }
-
-
             }
         });
     }
@@ -145,8 +139,6 @@ public class FragmentCarActivity extends Fragment {
 
         NewsRemote revistasRemote = new NewsRemote();
         new NewsPresenter(revistasRemote, this).requestAllRevistasCarros();
-
-
     }
 
     private void adapterClick() {
@@ -156,11 +148,7 @@ public class FragmentCarActivity extends Fragment {
             Intent intent = new Intent(getActivity(), NewsActivity.class);
             intent.putExtra(NewsActivity.URL, ((NewsItem) item).getUrl());
             startActivity(intent);
-
-
         });
-
-
     }
 
     private void catalogoClick(View viewMain) {
@@ -173,9 +161,5 @@ public class FragmentCarActivity extends Fragment {
             startActivity(intent);
 
         });
-
-
     }
-
-
 }
